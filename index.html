@@ -18,6 +18,7 @@
     }
     </script>
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Vollkorn" rel="stylesheet">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
   <style amp-custom>
   body {
@@ -36,7 +37,7 @@
     color: darkorange;
   }
   a:visited {
-    color: darkcyan;
+    color: darkcyan
   }
   ul {
     list-style-type: none;
@@ -78,8 +79,7 @@
     margin-right: -40px;
     z-index: 1;
   }
-  .header-icon:first-child {
-    
+  .header-icon-top {
     z-index: 2;
   }
   .header-icon .icon {
@@ -87,38 +87,128 @@
     border-radius: 50%;
     border: 3px cadetblue solid;
   }
-  header h1 {
+  h1.section-title {
     text-align: center;
     
   }
+  #RoseGold {
+    
+  }
+  .RoseGold {
+    background-color: #fff4dc; 
+  }
+  .RoseGold h1.section-title, 
+  .RoseGold h2 {
+    color: #ef7651;
+  }
+  .GoldieYoung{ 
+    background-color: lightgoldenrodyellow; 
+  }
+  .GoldieYoung h1,
+  .GoldieYoung h2,
+  .GoldieYoung h3,
+  .GoldieYoung h4,
+  .GoldieYoung h5,
+  .GoldieYoung h6 {
+    color: salmon;
+  }
+  footer {
+    margin-top: 50px;
+
+    font-size: 0.9em;
+    text-align: center;
+
+  }
+  footer section {
+    padding-bottom: 30px;
+  }
+  footer strong {
+    font-size: 2em;
+  }
   </style>
   </head>
-  <body>
+  <body class="RoseGold" id="body">
     <header>
       <div class="header-stage">
         <div class="header-icons">
-          <div class="header-icon"><amp-img class="icon" src="square-icon-sm.png" alt="square-icon" height="100" width="100"></amp-img></div>
-          <div class="header-icon"><amp-img class="icon" src="rose-gold-final2a-sm.jpg" alt="rose-gold" height="100" width="100"></amp-img></div>
+          <div class="header-icon header-icon-top" id="RoseGold-headericon"><amp-img class="icon" src="rose-gold-final2a-sm.jpg" alt="rose-gold" height="100" width="100" on="tap:RoseGold.show,GoldieYoung.hide,body.toggleClass(class='RoseGold'),body.toggleClass(class='GoldieYoung'),GoldieYoung-headericon.toggleClass(class='header-icon-top'),RoseGold-headericon.toggleClass(class='header-icon-top')"></amp-img></div>
+          <div class="header-icon" id="GoldieYoung-headericon"><amp-img class="icon" src="square-icon-sm.png" alt="square-icon" height="100" width="100" on="tap:GoldieYoung.show,RoseGold.hide,body.toggleClass(class='GoldieYoung'),body.toggleClass(class='RoseGold'),GoldieYoung-headericon.toggleClass(class='header-icon-top'),RoseGold-headericon.toggleClass(class='header-icon-top')"></amp-img></div>
         </div>
       </div>
-      <h1>Rose Gold</h1>
+      
     </header>
-    <section class="menu">
-      <h3>Menu</h3>
-      <ul>
-        <li><a href="#">bootstraptest</a></li>
-        <!-- <li><a href="//localhost/webdev/1houramp/index.html">1HourAmp</a></li> -->
-        <li><a href="https://fishysticks456.github.io/">fishysticks456.github.io</a></li>
-    </section>
-    <section class="contact">
-      <h3>Contact Info</h3
->      <ul>
-        <li><label>Email: </label><a href="mailto:goldie.young456@gmail.com">goldie.young456@gmail.com</a></li>
-        <li>Phone: (###) ###-####</li>
-    </section>
-    <section class="lorem"> 
-      <p>A lone stallion of noble breed wandered the Midwest grasslands with the wind in his mane and the naked sun as his only guide, letting the forces of nature lead him to the unknown future.</p>
-    </section>
-    </ul>
+    <div class="section-container" id="RoseGold">
+      <h1 class="section-title">Rose Gold</h1>
+      <section class="menu">
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="#">bootstraptest</a></li>
+          <!-- <li><a href="//localhost/webdev/1houramp/index.html">1HourAmp</a></li> -->
+          <li><a href="https://fishysticks456.github.io/">fishysticks456.github.io</a></li>
+          <li><a href="http://localhost/webdev/dataisbeautiful/charts.html">localhost: dataisbeautiful travel survey</a></li>
+        </ul>
+      </section>
+      <section class="summary"> 
+        <h3>Summary</h3>
+        <p>This page was created using AMP, Google's Accelerated Mobile Pages library. It ensures the page can load quickly on mobile by blocking most JS and only allowing basic functionality on the page: text, pictures, slides, menus, ads, etc. Implementing Google's AMP ensures your website doesn't turn away mobile users on a slow network who can't load the page within 3 seconds, which is <a href="https://neilpatel.com/blog/speed-is-a-killer/" target"_blank">the threshold for most webpage abandonments</a>.</p>
+      </section>
+      <section class="todo">
+        <h3>To Do</h3>
+        <ol>
+          <li>Learn Node.js and set up a basic server that reads and writes data, like visitor analytics or an art site with users and galleries. It would be cool to set up my own "Deviantart".</li>
+          <li>Use D3.js on a /r/dataisbeautiful prompt.</li>
+          <li>Create my dream farming adventure game (ala Rune Factory, Stardew Valley, Harvest Moon) (no fighting, only wholesome activities) (only the bad guys fight).</li>
+        </ol>
+      </section>
+      <section class="github">
+        <h3>How to merge on Github</h3>
+        <ol>
+          <li>Turn on Github CMD from Start menu</li>
+          <li>Go to folder Fishy/Webdev/amp</li>
+          <li>Check git status to see what's up</li>
+          
+        </ol>
+      </section>
+      <section class="lorem"> 
+        <h3>Diary</h3>
+        <p>9/8/2018 8:58pm: 今天我喝柴拿铁也读手册的 Node.js</p>
+        <p>10/21/2018 11:25am: Estoy estudiando r/dataisbeautiful con Bootstrap y D3.js hoy.</p>
+        <p>11/03/2018 6:33pm: Today I washed all my clothes. Unfortunately, I did not use enough soap, and my pants still slightly stink. Next time I do laundry I'll wash them again with more soap.</p>
+        <p>11/12/2018 1:02pm: At Las Vegas Art District drinking tea in a fancy coffee shop. I ran my 4th and last marathon last night, very cold and feeling nauseous the first half from 2 cups of coffee. I did not prepare for a full marathon, I should've done the half. My legs started hurting at mile 15 instead of mile 20 or 25 like in previous races. I had to walk the last 2, they hurt so much I thought I might die alone, collapsed on the Las Vegas strip in a crowd of uncaring tourists. I'm glad I finished it, that's all that matters.</p>
+      </section>
+    </div> <!-- End of RoseGold -->
+    <div class="section-container" id="GoldieYoung" hidden>
+      <h1 class="section-title">Goldie Young</h1>
+      <section class="bio">
+        <h3>Bio</h3>
+        <ul>
+          <li>Works in Newegg (4+ years) in City of Industry.</li>
+          <li>Filthy casual web developer.</li>
+          <li>Enjoys video games and financial stability.</li>
+        </ul>
+      </section>
+      <section class="preference">
+        <h3>Likes</h3>
+        <ul>
+          <li>Cats, flowers, biking</li>
+          <li>Washing dishes and running in the morning</li>
+        </ul>
+        <h3>Disikes</h3>
+        <ul>
+          <li>Cat fur everywhere, dead plants, nausea from too much coffee</li>
+          <li>Old dirty dishes, running in the evening</li>
+        </ul>
+      </section>
+      <section class="contact">
+        <h3>Contact Info</h3>
+        <ul>
+          <li><label>Email: </label><a href="mailto:goldie.young456@gmail.com">goldie.young456@gmail.com</a></li>
+          <!-- <li>Phone: (###) ###-####</li> -->
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <section><h1>&clubs;&spades;&hearts;&diamondsuit;</h1>(c) means copyright</section>
+    </footer>
   </body>
 </html>

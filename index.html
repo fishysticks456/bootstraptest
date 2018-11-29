@@ -48,6 +48,14 @@
     background-color: white;
     margin: 0 auto;
   }
+  section:after {
+    content:"";
+    display: block;
+    vertical-align: bottom;
+    width: 50%;
+    margin: 40px auto 0px;
+    border-top: 1px solid #eee;
+  }
   header {
     width: 100%;
     position: relative;
@@ -146,6 +154,7 @@
           <!-- <li><a href="//localhost/webdev/1houramp/index.html">1HourAmp</a></li> -->
           <li><a href="https://fishysticks456.github.io/">fishysticks456.github.io</a></li>
           <li><a href="http://localhost/webdev/dataisbeautiful/charts.html">localhost: dataisbeautiful travel survey</a></li>
+          <li><a href="http://localhost/webdev/amp/webform/index.html">localhost: webform for MKT</a></li>
         </ul>
       </section>
       <section class="summary"> 
@@ -155,6 +164,7 @@
       <section class="todo">
         <h3>To Do</h3>
         <ol>
+          <li>Fix footer links</li>
           <li>Learn Node.js and set up a basic server that reads and writes data, like visitor analytics or an art site with users and galleries. It would be cool to set up my own "Deviantart".</li>
           <li>Use D3.js on a /r/dataisbeautiful prompt.</li>
           <li>Create my dream farming adventure game (ala Rune Factory, Stardew Valley, Harvest Moon) (no fighting, only wholesome activities) (only the bad guys fight).</li>
@@ -171,12 +181,13 @@
           <li>Type "git push" to push, password is s******6</li>         
         </ol>
       </section>
-      <section class="lorem"> 
+      <section class="lorem" hidden> 
         <h3>Diary</h3>
         <p>9/8/2018 8:58pm: 今天我喝柴拿铁也读手册的 Node.js</p>
         <p>10/21/2018 11:25am: Estoy estudiando r/dataisbeautiful con Bootstrap y D3.js hoy.</p>
         <p>11/03/2018 6:33pm: Today I washed all my clothes. Unfortunately, I did not use enough soap, and my pants still slightly stink. Next time I do laundry I'll wash them again with more soap.</p>
         <p>11/12/2018 1:02pm: At Las Vegas Art District drinking tea in a fancy coffee shop. I ran my 4th and last marathon last night, very cold and feeling nauseous the first half from 2 cups of coffee. I did not prepare for a full marathon, I should've done the half. My legs started hurting at mile 15 instead of mile 20 or 25 like in previous races. I had to walk the last 2, they hurt so much I thought I might die alone, collapsed on the Las Vegas strip in a crowd of uncaring tourists. I'm glad I finished it, that's all that matters.</p>
+        <p>11/24/2018 6:42pm: Building a webform using Django (in Python) for a work side-project. Hoping it can create campaigns, campaign HTML, and store campaign data in an excel file (.xlsx). Maybe I can add automatic reporting as well.</p>
       </section>
     </div> <!-- End of RoseGold -->
     <div class="section-container" id="GoldieYoung" hidden>
@@ -210,6 +221,7 @@
       </section>
     </div>
     <footer>
+      <section><a href="#RoseGold">Home</a><br><a href="#GoldieYoung">About</a></section>
       <section><h1>&clubs;&spades;&hearts;&diamondsuit;</h1>(c) means copyright</section>
     </footer>
   </body>

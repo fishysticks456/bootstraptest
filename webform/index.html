@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DYM MKT Webform</title>
+
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <style>
+      pre {
+        font-size: 14px;
+        line-height: 20px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        height: auto !important;
+        margin: 1rem;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: lightgrey;
+      }
+      var {
+        font-style: normal;
+        color: darkgoldenrod;
+      }
+      input {
+        text-transform: uppercase;
+      }
+      h4 {
+        font-size: 1.1em;
+      }
+      .form-output:before {
+        content: "";
+        display: table;
+        position: relative;
+        width: 100%;
+        border-top: 1px solid grey;
+        margin: 20px auto;
+      }
+      .btn-primary, .btn-primary.disabled, .btn-primary:disabled {
+        color: #fff;
+        background-color: #6c757d;
+        border-color: #6c757d;
+      }
+      .btn-primary.active:not(.disabled):not(:disabled):hover {
+        background-color: #1279e8;
+        border-color: #1279e8;
+      }
+      .btn-primary:not(.active):hover{
+        background-color: #8293a2;
+        border-color: #8293a2;
+      }
+      .btn-outline-secondary.save-banners {
+        margin: 10px auto;
+      }
+      #WebformSettings{
+        float:right;
+        border: 1px solid grey;
+        border-radius: 10px;
+        padding: 10px 20px;
+      }
+    </style>
+
+  </head>
+
+  <body id="page-top" class="sidebar-toggled">
+    
+    <!--<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+      <a class="navbar-brand mr-1" href="index.html">r/dataisbeautiful</a>
+
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+    </nav>-->
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <!--
+      <ul class="sidebar navbar-nav toggled">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Pages</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <h6 class="dropdown-header">Login Screens:</h6>
+            <a class="dropdown-item" href="login.html">Login</a>
+            <a class="dropdown-item" href="register.html">Register</a>
+            <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+            <div class="dropdown-divider"></div>
+            <h6 class="dropdown-header">Other Pages:</h6>
+            <a class="dropdown-item" href="404.html">404 Page</a>
+            <a class="dropdown-item" href="blank.html">Blank Page</a>
+          </div>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Charts</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Tables</span></a>
+        </li>
+      </ul>-->
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="http://localhost/webdev/amp/index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active">DYM MKT Webform</li>
+          </ol>
+          
+          <!-- Form -->
+
+          <div id="Loader">Loading...</div>
+
+          <form class="form-container" id="WebformSettings">
+            <h4>Banners</h4>
+            <button type="button" data-toggle="button" data-label="banner-ht" class="btn btn-primary active" href="#" aria-pressed="true" active>HT</button>
+            <button type="button" data-toggle="button" data-label="banner-ut" class="btn btn-primary active" href="#" aria-pressed="true" active>UT</button>
+            <br/>
+            <button type="button" data-label="save-banners" class="btn btn-sm btn-outline-secondary save-banners" onclick="saveBanners()">Save banners to HTML files</button>
+          </form>
+          <div class="form-container" id="Webform"></div>
+
+
+
+
+          <!-- End Form -->
+        </div>
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <!--<span>Copyright © Your Website 2018</span>-->
+              <p>Webform for Dyanmic Marketing team's internal use.</p>
+              <p>Theme <a href="https://startbootstrap.com/template-overviews/sb-admin/">SB Admin</a> from <a href="https://startbootstrap.com">startbootstrap.com</a></p>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+<!-- Load Babel -->
+<!-- v6 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Load our React component. -->
+    <script type="text/babel" src="src/form.js" ></script>
+
+
+  </body>
+
+</html>

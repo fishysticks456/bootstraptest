@@ -12,18 +12,21 @@
     <title>DYM MKT Webform</title>
 
     <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free.all.min.css" rel="stylesheet" type="text/css">
 
     <!-- Page level plugin CSS-->
-    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="vendor/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <style>
+      body {
+        font-size: 0.9em;
+      }
       pre {
-        font-size: 14px;
-        line-height: 20px;
+        /*font-size: 14px;
+        line-height: 20px;*/
         white-space: pre-wrap;
         word-break: break-word;
         height: auto !important;
@@ -31,18 +34,27 @@
         padding: 10px;
         border-radius: 10px;
         background-color: lightgrey;
+        text-align: left;
       }
       var {
         font-style: normal;
-        color: darkgoldenrod;
+        color: brown;
       }
-      input {
+      
+      input.uppercase {
         text-transform: uppercase;
       }
       h4 {
         font-size: 1.1em;
       }
-      .form-output:before {
+      
+      footer {
+        margin-top: 20px;
+        padding: 20px;
+        clear:both;
+        background-color:lightgrey;
+      }
+      .form-output:before, #Devlog:before {
         content: "";
         display: table;
         position: relative;
@@ -50,18 +62,26 @@
         border-top: 1px solid grey;
         margin: 20px auto;
       }
-      .btn-primary, .btn-primary.disabled, .btn-primary:disabled {
+      .btn-primary {
         color: #fff;
-        background-color: #6c757d;
+      }
+      .btn-primary, .btn-primary.disabled, .btn-primary:disabled {
+        color: #1279e8;
+        background-color: #fff;
         border-color: #6c757d;
+        /*background-color: #6c757d;
+        border-color: #6c757d;*/
       }
       .btn-primary.active:not(.disabled):not(:disabled):hover {
         background-color: #1279e8;
         border-color: #1279e8;
       }
       .btn-primary:not(.active):hover{
-        background-color: #8293a2;
-        border-color: #8293a2;
+        color: #fff;
+        background-color: #1279e8;
+        border-color: #1279e8;
+        /*background-color: #8293a2;
+        border-color: #8293a2;*/
       }
       .btn-outline-secondary.save-banners {
         margin: 10px auto;
@@ -71,6 +91,13 @@
         border: 1px solid grey;
         border-radius: 10px;
         padding: 10px 20px;
+        margin: 20px;
+      }
+      .form-output-direct {
+        display: none;
+      }
+      .form-output {
+        text-align: center;
       }
     </style>
 
@@ -147,15 +174,19 @@
             <h4>Banners</h4>
             <button type="button" data-toggle="button" data-label="banner-ht" class="btn btn-primary active" href="#" aria-pressed="true" active>HT</button>
             <button type="button" data-toggle="button" data-label="banner-ut" class="btn btn-primary active" href="#" aria-pressed="true" active>UT</button>
+            <button type="button" data-toggle="button" data-label="banner-pb" class="btn btn-primary active" href="#" aria-pressed="true" active>PB</button>
+            <button type="button" data-toggle="button" data-label="banner-nv1" class="btn btn-primary active" href="#" aria-pressed="true" active>Flyout</button>
             <br/>
-            <button type="button" data-label="save-banners" class="btn btn-sm btn-outline-secondary save-banners" onclick="saveBanners()">Save banners to HTML files</button>
+            <button type="button" data-label="save-banners" class="btn btn-sm btn-outline-secondary save-banners" onclick="saveBanners();">Save banners to HTML files</button>
           </form>
           <div class="form-container" id="Webform"></div>
-
-
-
-
           <!-- End Form -->
+          <div id="Devlog">
+            <h4>Devlog</h4>
+            <p>This webform was created to facilitate Dynamic Marketing team's campaign setup procedure by quickly generating HTML files for dynamic banners. Normal operations involved search-replacing 5 fields in multiple HTML files in a text editor, often just copies of older campaigns that might not have all the required banner formats, and always with the possibility of carrying over bad code.</p>
+            <p>While React was able to create this fully functional webform, it didn't allow inline javascript to be inserted in an onClick attribute due to it be unsafe practice for the past 8 years. Try telling that to my boss. Any attempts to change how our banners track impressions and clicks require 6 months of work and 20 meetings minimum.</p>
+
+          </div>
         </div>
         <!-- /.container-fluid -->
 
@@ -164,7 +195,7 @@
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
               <!--<span>Copyright © Your Website 2018</span>-->
-              <p>Webform for Dyanmic Marketing team's internal use.</p>
+              <p>Webform for Dyanmic Marketing team's internal use. Created with React, Bootstrap, Filesaver.js, JSZip, and something called a Blob.</p>
               <p>Theme <a href="https://startbootstrap.com/template-overviews/sb-admin/">SB Admin</a> from <a href="https://startbootstrap.com">startbootstrap.com</a></p>
             </div>
           </div>
@@ -197,25 +228,223 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.easing.min.js"></script>
+    
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    
+    <script src="vendor/jszip/jszip.min.js"></script>
+    <script src="vendor/filesaver.min.js"></script>
 
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <!--<script src="vendor/chart.js/Chart.min.js"></script>-->
 
 <!-- Load Babel -->
 <!-- v6 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="js/babel.min.js"></script>
 
     <!-- Load React. -->
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="js/react.development.js" crossorigin></script>
+    <script src="js/react-dom.development.js" crossorigin></script>
+
 
     <!-- Load our React component. -->
-    <script type="text/babel" src="src/form.js" ></script>
+    <!--<script type="text/babel" src="form.js" ></script>-->
+    <script type="text/babel">
+    // Form
+
+function formatImg(url, replacement) {
+    return url.replace(/\d\d\d(x|_)\d\d\d?/g, replacement);
+  }
+
+function writeBanner(props) {
+  var adobeClick = 'if(typeof s != \'undefined\'){'
+          + 's.linkTrackEvents=\'\'; s.linkTrackVars=\'prop26,eVar50\';'
+          + 's.prop26=s.eVar50=\'-_--_--_--_--_-' + props.banner.campaignID + '_' + props.pos.toUpperCase() + '_' + props.banner.seg + '-_-Pers_MNT-_--_-\'+new Date().toISOString()+\'-_-\';\';'
+          + 's.tl(this,\'o\',\'Target Banner click monetate\');};';
+
+  var adobeImp = 'if(typeof s != \'undefined\'){'
+          + 's.linkTrackEvents=\'\'; s.linkTrackVars=\'prop26,eVar50\';'
+          + 's.prop26=s.eVar50=\'-_--_--_--_--_-' + props.banner.campaignID + '_' + props.pos.toUpperCase() + '_' + props.banner.seg + '-_-Pers_MNT_Imp-_--_-\'+new Date().toISOString()+\'-_-\';\';'
+          + 's.tl(this,\'o\',\'Target Banner click monetate\');};';
+          
+  return{__html: '<a href="' + props.banner.href + '" onClick="' + adobeClick + '">'
+          + '<img src=\'' + formatImg(props.banner.bannerLink, props.imgDimensions) + '\' alt=\''+props.banner.alt + '\' title=\''+props.banner.alt + '\' onClick="' + adobeImp + '" />' 
+          + '</a>'};
+}
+
+class BannerPreview extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  adobeClick(campaignID, pos, seg, e) {
+    e.preventDefault();
+    console.log("Adobe click on banner " + campaignID + "_" + pos + "_" + seg);
+  };
+
+
+  render () {
+    return (
+      <div className={"form-output banner-"+this.props.pos}>
+        <h4>{this.props.posTitle} ({this.props.pos.toUpperCase()})</h4>
+        <pre className="text-area">
+          &#x3C;center&#x3E; <br/>
+            &#x3C;a href=&#x22;<var>{this.props.banner.href}</var>&#x22;&#x3E; <br/>
+              &#x3C;img src=&#x22;<var>{formatImg(this.props.banner.bannerLink, this.props.imgDimensions)}</var>&#x22; alt=&#x22;<var>{this.props.banner.alt}</var>&#x22; title=&#x22;<var>{this.props.banner.alt}</var>&#x22;/&#x3E; <br/>
+            &#x3C;/a&#x3E; <br/>
+          &#x3C;/center&#x3E;
+        </pre>
+        <div className="banner-preview" id={this.props.banner.campaignID + "_" + this.props.pos + "_" + this.props.banner.seg}>
+          <center dangerouslySetInnerHTML={writeBanner(this.props)}>
+          </center>
+        </div> 
+        <center>{this.props.banner.campaignID}_{this.props.pos.toUpperCase()}_{this.props.banner.seg}</center>
+      </div>
+    )
+  }
+}
+
+class Webform extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      campaignID : '',
+      campaignName : '',
+      seg : 'STATIC',
+      href : 'http://localhost/webdev/amp/index.html',
+      bannerLink : 'https://dummyimage.com/970x50/f00/fff',
+      alt : 'alt text for <img>'
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+
+  }  
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = (target.name == "campaignID" || target.name == "seg") ? target.value.toUpperCase() : target.value;
+    const name = target.name;
+    this.setState({
+      [name] : value
+    });
+
+  }
+  render() {
+    return (
+      <form name="DYMForm">
+        <label>Campaign Name : <input name="campaignName" type="text" value={this.state.value} size="36" onChange={this.handleInputChange} /></label>
+        <br/>
+        <label>*Campaign ID : <input name="campaignID" type="text" value={this.state.value} size="16" onChange={this.handleInputChange} className="uppercase"/></label>
+        <br/>
+        <label>Customer Segment : <input name="seg" type="text" value={this.state.value} placeholder={this.state.seg} size="16" onChange={this.handleInputChange} className="uppercase"/></label>
+        <br/>
+        <label>*Banner Href : <input name="href" type="text" value={this.state.value} placeholder={this.state.href} size="36" onChange={this.handleInputChange} /></label>
+        <br/>
+        <label>*Banner Img : <input name="bannerLink" type="text" value={this.state.value} placeholder={this.state.bannerLink} size="36" onChange={this.handleInputChange} /></label>
+        <br/>
+        <label>*Banner Alt & Title : <input name="alt" type="text" value={this.state.value} placeholder={this.state.alt} size="36" onChange={this.handleInputChange} /></label>
+        <br/>
+        <div className="form-output form-output-direct">
+          CampaignID : {this.state.campaignID} <br/>
+          CampaignName : {this.state.campaignName}<br/>
+          Banner Position : {this.state.alt}<br/>
+          Customer Segment : {this.state.seg}<br/>
+          Href Link : {this.state.href}<br/>
+          Banner Link : {this.state.bannerLink}
+        </div>
+
+        <BannerPreview posTitle="Homepage Top Banner" pos="ht" imgDimensions="970x50" banner={this.state}/>
+        <BannerPreview posTitle="Universal Top Banner" pos="ut" imgDimensions="970x90" banner={this.state}/>
+        <BannerPreview posTitle="Product Page Box Banner" pos="pb" imgDimensions="300x250" banner={this.state}/>
+        <BannerPreview posTitle="Flyout Banner - Systems" pos="nv1" imgDimensions="120x600" banner={this.state}/>
+          
+          
+      </form>
+      
+      
+    );
+  }
+}
+
+ReactDOM.render(
+  <Webform />,
+  document.getElementById('Webform')
+);
+jQuery("#Loader").hide();
+jQuery("#WebformSettings button.btn-primary").map(function(i,n) {
+  jQuery(n).click(function() {
+    jQuery("." + jQuery(this).attr("data-label")).slideToggle();
+  })
+})
+
+// Function to download data to a file
+function download(data, filename, type) {
+  var file = new Blob([data], {type: type});
+  if (window.navigator.msSaveOrOpenBlob) // IE10+
+      window.navigator.msSaveOrOpenBlob(file, filename);
+  else { // Others
+      var a = document.createElement("a"),
+              url = URL.createObjectURL(file);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);  
+      }, 0); 
+  }
+}
+function saveBanners() {
+  var banners = jQuery(".banner-preview:visible"); 
+
+  if( banners.length > 1 ) {
+    console.log("Downloading multiple html files.");
+    var zip = new JSZip();
+    banners.map(function(i,n) {
+      var filename = jQuery(n).attr('id').toLowerCase() + ".html";
+      zip.folder("banners").file(filename, jQuery(n).html());
+      
+    });
+    zip.generateAsync({type:"blob"})
+      .then(function (blob) {
+          saveAs(blob, "banners.zip");
+      });  
+  } else {
+    console.log("Downloading a banner as an html file.");
+    var filename = jQuery(banners).attr("id").toLowerCase() + ".html";
+    var file = new Blob([jQuery(banners).html()], {type: "html"});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+    }
+  }
+}
+
+  //var onclick = "if(typeof s != &#x27;undefined&#x27;) {s.linkTrackEvents=&#x27;&#x27;; s.linkTrackVars=&#x27;prop26,eVar50&#x27;;
+    //s.prop26=&#x27;-_--_--_--_--_-" + this.state.campaignID + "_PCs_" + this.state.seg + "-_-Pers_MNT-_--_-&#x27;+new Date().toISOString()+&#x27;-_-&#x27;;
+    //s.eVar50=&#x27;-_--_--_--_--_-" + this.state.campaignID + "_PCs_" + this.state.seg + "-_-Pers_MNT-_--_-&#x27;+new Date().toISOString()+&#x27;-_-&#x27;;
+    //s.tl(this,&#x27;o&#x27;,&#x27;Target Banner click monetate&#x27;);}"
+
+  //   s.linkTrackVars='prop26,eVar50';
+  // s.prop26='-_--_--_--_--_-DYMX-HSP-18008_Header_Static-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
+  // s.eVar50='-_--_--_--_--_-DYMX-HSP-18008_Header_Static-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
+  // s.tl(this,'o','Target Banner click monetate');
+
+</script>
 
 
   </body>

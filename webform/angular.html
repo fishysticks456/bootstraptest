@@ -319,7 +319,7 @@ function saveBanners() {
   } else {
     console.log("Downloading a banner as an html file.");
     var filename = jQuery(banners).attr("id").toLowerCase() + ".html";
-    var file = new Blob([jQuery(banners).html()], {type: "html"});
+    var file = new Blob([jQuery(banners).text()], {type: "html"});
     if (window.navigator.msSaveOrOpenBlob) // IE10+
         window.navigator.msSaveOrOpenBlob(file, filename);
     else { // Others

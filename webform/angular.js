@@ -12,7 +12,7 @@ angular.module('dymApp', [])
 
   // Set default values
   dym.campaignID = "DYM-MKS-19000";
-  dym.href = "http://localhost/webdev/amp/index.html";
+  dym.href = "";
   dym.bannerLink = "https://dummyimage.com/970x50/f00/fff";
   dym.alt = "Alt text for banners";
   dym.customerSeg = "STATIC";

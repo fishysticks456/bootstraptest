@@ -5,22 +5,23 @@
   <center>{{$ctrl.dym.campaignID | uppercase}}_{{$ctrl.type}}_{{$ctrl.dym.customerSeg}} ({{$ctrl.size}})</center>
   
   <!--<textarea ng-model="$ctrl.textarea" name="textarea" type="text" placeholder="HTML should go here" cols="100" rows="6" value=""></textarea>-->
-  
-<pre class="text-area" id="{{$ctrl.dym.campaignID | lowercase}}_{{$ctrl.type | lowercase}}_{{$ctrl.dym.customerSeg | lowercase}}">&lt;center&gt;
-  &lt;a href="<var>{{$ctrl.dym.href}}</var>" target="_blank" <span ng-if="$ctrl.bg">style="background: url('<var>{{$ctrl.dym.bannerLink | resize:"bg_"+$ctrl.size}}</var>') repeat-x; display:block;"</span> 
+<span class="copytext" data-target="{{$ctrl.dym.campaignID | lowercase}}_{{$ctrl.type | lowercase}}_{{$ctrl.dym.customerSeg | lowercase}}" onclick="copyToClipboard(this)" ng-show="$ctrl.dym.settings.precode">Copy to Clipboard</span>
+<pre class="text-area" id="{{$ctrl.dym.campaignID | lowercase}}_{{$ctrl.type | lowercase}}_{{$ctrl.dym.customerSeg | lowercase}}" ng-show="$ctrl.dym.settings.precode">
+  &lt;center&gt;
+  &lt;a href="<var>{{$ctrl.dym.href}}</var>" target="_blank" <span ng-if="$ctrl.bg">style="background: url('<var>{{$ctrl.dym.bannerLink | resize:"bg_"+$ctrl.size}}</var>') repeat-x; display:block;"</span>
     onclick="if(typeof s != 'undefined') {s.linkTrackEvents=''; s.linkTrackVars='prop26,eVar50';
     s.prop26='-_--_--_--_--_-<var>{{$ctrl.dym.campaignID}}</var>_<var>{{$ctrl.type}}</var>_<var>{{$ctrl.dym.customerSeg}}</var>-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
     s.eVar50='-_--_--_--_--_-<var>{{$ctrl.dym.campaignID}}</var>_<var>{{$ctrl.type}}</var>_<var>{{$ctrl.dym.customerSeg}}</var>-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
     s.tl(this,'o','Target Banner click monetate');}" <span ng-if="$ctrl.mobile">style="display:block; position:relative;"</span>&gt;
-    &lt;img src="<var>{{$ctrl.dym.bannerLink | resize:$ctrl.size}}</var>" 
+    &lt;img src="<var>{{$ctrl.dym.bannerLink | resize:$ctrl.size}}</var>"
       onload="if(typeof s != 'undefined') {s.linkTrackEvents=''; s.linkTrackVars='prop26,eVar50';
       s.prop26='-_--_--_--_--_-<var>{{$ctrl.dym.campaignID}}</var>_<var>{{$ctrl.type}}</var>_<var>{{$ctrl.dym.customerSeg}}</var>-_-Pers_MNT_Imp-_--_-'+new Date().toISOString()+'-_-';
       s.eVar50='-_--_--_--_--_-<var>{{$ctrl.dym.campaignID}}</var>_<var>{{$ctrl.type}}</var>_<var>{{$ctrl.dym.customerSeg}}</var>-_-Pers_MNT_Imp-_--_-'+new Date().toISOString()+'-_-';
-      s.tl(this,'o','Target Banner impression monetate');}" alt="<var>{{$ctrl.dym.alt}}</var>" title="<var>{{$ctrl.dym.alt}}</var>" <span ng-if="$ctrl.mobile">style="max-width: 100%;display: block;margin: auto;"</span><span ng-if="$ctrl.bg||$ctrl.flyout">style="vertical-align: middle;"</span>/&gt; 
+      s.tl(this,'o','Target Banner impression monetate');}" alt="<var>{{$ctrl.dym.alt}}</var>" title="<var>{{$ctrl.dym.alt}}</var>" <span ng-if="$ctrl.mobile">style="max-width: 100%;display: block;margin: auto;"</span><span ng-if="$ctrl.bg||$ctrl.flyout">style="vertical-align: middle;"</span>/&gt;
   &lt;/a&gt;
 &lt;/center&gt;</pre>
   
-  <div class="banner-preview">
+  <div class="banner-preview" ng-show="$ctrl.dym.settings.preview">
     <center><a href="{{$ctrl.dym.href}}" style="background: url('{{$ctrl.dym.bannerLink}}.replace(/\d\d?\d?x\d\d?\d?/,'5x50')') repeat-x;" ><img ng-src="{{$ctrl.dym.bannerLink | resize:$ctrl.size}}" alt="{{$ctrl.dym.alt}}" title="{{$ctrl.dym.alt}}"></a></center>
   </div>
 

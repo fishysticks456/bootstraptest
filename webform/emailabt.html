@@ -1,0 +1,474 @@
+<div class="form-output">
+  <style>
+
+  
+a {
+    color: #222;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+ol, ul {
+    list-style: none;
+}
+.price {
+    margin: 0 0 5px 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 12px;
+    text-align: left
+}
+
+.price-was {
+    display: block;
+    height: 15px;
+    overflow: hidden;
+    color: #707070;
+    line-height: 15px;
+    text-decoration: line-through;
+}
+
+.price-map {
+    display: none;
+    font-size: 15px;
+    font-weight: 700;
+    height: 30px;
+    margin-top: 4px
+}
+
+.price-map a {
+    color: #222;
+    text-decoration: underline;
+    vertical-align: middle
+}
+
+.price-map a:active,.price-map a:hover {
+    color: #06f
+}
+
+.price-map .price-current-num {
+    margin-left: 3px;
+    color: #707070;
+    font-weight: 400;
+    text-decoration: none
+}
+
+.price-current-label {
+    font-size: 14px
+}
+
+.price-currency-label {
+    text-transform: uppercase
+}
+
+.price-current {
+    font-size: 24px;
+    height: 36px
+}
+
+.price-current sup {
+    font-size: 13px;
+    vertical-align: super
+}
+
+.price-current-range {
+    display: none
+}
+
+.price-current-range sup {
+    font-size: 11px
+}
+
+.price-current-num {
+    display: inline-block;
+    color: #707070;
+    font-size: 11px;
+    vertical-align: super
+}
+
+.price-current-each {
+    display: inline-block;
+    color: #707070;
+    font-size: 11px;
+    vertical-align: super
+}
+
+.price-save {
+    margin-bottom: 5px;
+    height: 18px;
+    color: #C1240B;
+    font-size: 0
+}
+
+.price-save-endtime {
+    display: block;
+    margin-bottom: 5px
+}
+
+.price-save-endtime strong {
+    font-size: 12px
+}
+
+.price-save-dollar,.price-save-label,.price-save-percent {
+    position: relative;
+    background: #cc4e00;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px
+}
+
+.price-save-label {
+    padding: 0 0 0 6px
+}
+
+.price-save-dollar {
+    padding: 0 0 0 2px
+}
+
+.price-save-percent {
+    padding: 0 6px 0 2px
+}
+
+.price-save-label:before,.price-save-percent:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0
+}
+  .price-save-percent:after {
+        left: 100%;
+    border-bottom: 16px solid #cc4e00;
+    border-right: 10px solid transparent;
+  }
+  .price-note, .price-save, .price-ship {
+    margin-bottom: auto;
+}
+
+.price-note {
+    display: block;
+    margin-bottom: 5px;
+    height: 15px;
+}
+  .featured-deals .price-ship {
+    display: block;
+}
+
+.price-note, .price-save, .price-ship {
+    margin-bottom: auto;
+}
+.price-ship {
+    display: none;
+}
+.price-ship {
+    display: block;
+    margin-bottom: 5px;
+    height: 18px;
+    overflow: hidden;
+}
+  .featured-deal .item-title {
+    margin-top: 11px;
+    height: 2.58em;
+}
+
+.item-container-grid .item-title {
+    height: 3.88em;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+}
+.item-title {
+    display: block;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    margin-bottom: 6px;
+    max-width: 512px;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.3;
+    word-wrap: break-word;
+    word-break: break-word;
+    text-overflow: ellipsis;
+}
+  .featured-deal .item-promo {
+    height: 2.58em;
+}
+.item-promo, .item-promo a {
+    font-style: italic;
+    word-break: normal;
+    text-overflow: ellipsis;
+}
+
+.item-promo {
+    position: relative;
+    margin: 5px 0 13px 0;
+    padding-left: 20px;
+    max-width: 512px;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: #cc4e00;
+    font-weight: 700;
+}
+  .item-promo-icon {
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #cc4e00;
+    color: #fff;
+    font-style: italic;
+    font-size: 11px;
+    line-height: 14px;
+    text-align: center;
+}
+  #MoreDeals .item-promo-icon:before {
+    left: 1px;
+    position: relative;
+}
+.item-promo-icon:before {
+    content: "i";
+}
+  .featured-deal-bottom {
+    margin-top: 10px;
+    background-color: #ddd;
+    background: linear-gradient(to bottom,#ececec,#ddd);
+}
+  @media (min-width: 1301px)
+.featured-deal-bottom-more {
+    font-size: 26px;
+}
+
+.featured-deal-bottom-more {
+    display: block;
+    font: 400 18px/40px 'Open Sans Condensed','Helvetica Narrow',arial,helvetica,sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+}
+  .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+  .fa-caret-right:before {
+    content: "\f0da";
+}
+  </style>
+  <ul class="nav nav-tabs" id="emailabt-tablist" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link nav-link-sm active" id="preview-tab" data-toggle="tab" href="#preview-emailabt" role="tab" aria-controls="preview-emailabt" aria-selected="true">Preview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link nav-link-sm" id="html-tab" data-toggle="tab" href="#html-emailabt" role="tab" aria-controls="html-emailabt" aria-selected="false">HTML</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="emailabt-tabpanels">
+    <div class="tab-pane fade show active" id="preview-emailabt" role="tabpanel" aria-labelledby="preview-tab" style="padding: 50px 20px">
+
+
+      <!-- Email preview -->
+  <div class="swiper-box-top">
+      <h2 class="swiper-box-top-title">Latest Email Deals</h2>
+  </div>
+  <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets" style="display:none"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span></div>
+  <span class="swiper-box-arrow-prev swiper-button-disabled" style="display:none"><i class="fa fa-angle-left"></i></span>
+  <span class="swiper-box-arrow-next swiper-button-disabled" style="display:none"><i class="fa fa-angle-right"></i></span>
+  <div class="swiper-container swiper-container-horizontal">
+      <div class="swiper-wrapper">
+
+
+  <div class="swiper-slide swiper-slide-active" style="width: 374px;">
+      <div class="item-container item-container-grid">
+          <a href="//promotions.newegg.com/neemail/latest/index-landing.aspx?cm_sp=Homepage_EMC-_-P1-_-{{$ctrl.email.sku}}-_-{{$ctrl.email.date}}" class="item-img" >
+
+              <img title="{{$ctrl.email.producttitle}}" src="{{$ctrl.email.productimg}}">
+
+          </a>
+          <div class="item-info">
+          <!-- top description -->
+
+          <!-- price -->
+          <ul class="price">
+              <li class="price-was">
+                <span ng-switch="$ctrl.email.isCategory">
+                  <span ng-switch-when="false" class="price-was-data" style="display: inline">${{$ctrl.email.fullprice}}</span>
+                  <span ng-switch-when="true" class="price-was-data" style="display: none">${{$ctrl.email.fullprice}}</span>
+                </span>
+              </li>
+              <li class="price-map">
+              </li>
+              <li class="price-current">
+                <span class="price-current-label"></span>
+                <span ng-switch="$ctrl.email.isCategory">
+                  <span ng-switch-when="true"><strong style="font-size:20px;">Category Wide Coupon Sale</strong></span>
+                  <span ng-switch-when="false">$<strong>{{$ctrl.email.saleprice | dollars}}</strong><sup>.{{$ctrl.email.saleprice | cents}}</sup></span>
+                </span>
+                      <span class="price-current-range">
+                          <abbr title="to">–</abbr>
+                      </span>
+              </li>
+              <li class="price-save">
+
+                      <span class="price-save-endtime price-save-endtime-current"></span>
+                      <span class="price-save-endtime price-save-endtime-another" ng-hide="$ctrl.email.isCategory"></span>
+
+
+                          <span class="price-save-label" ng-hide="$ctrl.email.isCategory || !$ctrl.email.showDiscount"></span>
+                          <span class="price-save-dollar" ng-hide="$ctrl.email.isCategory || !$ctrl.email.showDiscount"></span>
+                          <span class="price-save-percent" ng-hide="$ctrl.email.isCategory || !$ctrl.email.showDiscount"><span ng-show="$ctrl.email.showDiscount">Save: {{($ctrl.email.fullprice - $ctrl.email.saleprice)*100 / $ctrl.email.fullprice | rounded}}%</span></span>
+              </li>
+              <li class="price-note">
+
+              </li>
+              <li class="price-ship">
+                <span ng-hide="$ctrl.email.isCategory"><span ng-show="$ctrl.email.freeShipping">Free Shipping</span></span>
+              </li>
+  </ul>
+
+
+              <!-- bottom description -->
+
+                  <a href="https://promotions.newegg.com/neemail/latest/index-landing.aspx?cm_sp=Homepage_EMC-_-P1-_-{{$ctrl.email.sku}}-_-{{$ctrl.email.date}}" class="item-title">
+                {{$ctrl.email.producttitle}}
+
+                  </a>
+
+
+              <!--promption info-->
+              <p class="item-promo"><span ng-hide="$ctrl.email.isCategory"><i class="item-promo-icon" data-reactid=".0.0">&nbsp;</i>{{$ctrl.email.promotext}}</span></p>
+          </div>
+      </div>
+  </div>
+
+      </div>
+  </div>
+  <div class="featured-deal-bottom" style="max-width:374px">
+      <a href="https://promotions.newegg.com/neemail/latest/index-landing.aspx?cm_sp=Homepage_EMC-_-P1-_-{{$ctrl.email.sku}}-_-{{$ctrl.email.date}}" class="featured-deal-bottom-more">
+          See All Email Deals <i class="fa fa-caret-right"></i>
+      </a>
+  </div>
+
+      <!-- END Email preview -->
+    </div>
+    <div class="tab-pane fade" id="html-emailabt" role="tabpanel" aria-labelledby="html-tab">
+
+      
+      
+      
+      
+  <!-- HTML Code Preview -->
+
+  <div class="htmloutputwhatever">
+    <span class="copytext" data-target="{{$ctrl.email.campaignID | lowercase}}_{{$ctrl.email.sku | uppercase}}_{{$ctrl.email.date}}" onclick="copyToClipboard(this)">Copy to Clipboard</span>
+    <pre class="text-area" id="{{$ctrl.email.campaignID | lowercase}}_{{$ctrl.email.sku | uppercase}}_{{$ctrl.email.date}}" style="height: 400px;">&lt;div class="swiper-box-top"&gt;
+      &lt;h2 class="swiper-box-top-title"&gt;Latest Email Deals&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets" style="display:none"&gt;&lt;span class="swiper-pagination-bullet swiper-pagination-bullet-active"&gt;&lt;/span&gt;&lt;/div&gt;
+  &lt;span class="swiper-box-arrow-prev swiper-button-disabled" style="display:none"&gt;&lt;i class="fa fa-angle-left"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;span class="swiper-box-arrow-next swiper-button-disabled" style="display:none"&gt;&lt;i class="fa fa-angle-right"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;div class="swiper-container swiper-container-horizontal"&gt;
+      &lt;div class="swiper-wrapper"&gt;
+
+
+  &lt;div class="swiper-slide swiper-slide-active" style="width: 374px;"&gt;
+      &lt;div class="item-container item-container-grid"&gt;
+          &lt;a href="//promotions.newegg.com/neemail/latest/index-landing.aspx?cm_sp=Homepage_EMC-_-P1-_-<var>{{$ctrl.email.sku}}</var>-_-<var>{{$ctrl.email.date}}</var>" class="item-img" onclick="if(typeof s != 'undefined') {s.linkTrackEvents=''; s.linkTrackVars='prop26,eVar50';
+      s.prop26='-_--_--_--_--_-<var>{{$ctrl.email.campaignID}}</var>_DEAL_STATIC-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
+      s.eVar50='-_--_--_--_--_-<var>{{$ctrl.email.campaignID}}</var>_DEAL_STATIC-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
+      s.tl(this,'o','Target Banner click monetate');}"&gt;
+
+              &lt;img title="<var>{{$ctrl.email.producttitle | scrubbed}}</var>" src="<var>{{$ctrl.email.productimg}}</var>" onload="if(typeof s != 'undefined') {s.linkTrackEvents=''; s.linkTrackVars='prop26,eVar50';
+          s.prop26='-_--_--_--_--_-<var>{{$ctrl.email.campaignID}}</var>_DEAL_STATIC-_-Pers_MNT_Imp-_--_-'+new Date().toISOString()+'-_-';
+          s.eVar50='-_--_--_--_--_-<var>{{$ctrl.email.campaignID}}</var>_DEAL_STATIC-_-Pers_MNT_Imp-_--_-'+new Date().toISOString()+'-_-';
+          s.tl(this,'o','Target Banner impression monetate');}"&gt;
+
+          &lt;/a&gt;
+          &lt;div class="item-info"&gt;
+          &lt;!-- top description --&gt;
+
+          &lt;!-- price --&gt;
+          &lt;ul class="price"&gt;
+              &lt;li class="price-was"&gt;
+                <span ng-switch="$ctrl.email.isCategory">
+                  <span ng-switch-when="false">&lt;span class="price-was-data" style="display: inline"&gt;<var>${{$ctrl.email.fullprice}}</var>&lt;/span&gt;</span>
+                  <span ng-switch-when="true">&lt;span class="price-was-data" style="display: none"&gt;<var>${{$ctrl.email.fullprice}}</var>&lt;/span&gt;</span>
+                </span>
+              &lt;/li&gt;
+              &lt;li class="price-map"&gt;
+              &lt;/li&gt;
+              &lt;li class="price-current"&gt;
+                      &lt;span class="price-current-label"&gt;
+                      <span ng-switch="$ctrl.email.isCategory">
+                        <span ng-switch-when="true">&lt;strong style="font-size:20px;"&gt;Category Wide Coupon Sale&lt;/strong&gt;</span>
+                        <span ng-switch-when="false">$&lt;strong&gt;<var>{{$ctrl.email.saleprice | dollars}}</var>&lt;/strong&gt;&lt;sup&gt;.<var>{{$ctrl.email.saleprice | cents}}</var>&lt;/sup&gt;</span>
+                      </span>
+                      
+                      &lt;span class="price-current-range"&gt;
+                          &lt;abbr title="to"&gt;–&lt;/abbr&gt;
+                      &lt;/span&gt;
+              &lt;/li&gt;
+              &lt;li class="price-save"&gt;
+<span ng-show="$ctrl.email.isCategory || !$ctrl.email.showDiscount">
+  &lt;style&gt;
+    #MoreDeals span.price-save-percent,
+    #MoreDeals span.price-save-label,
+    #MoreDeals span.price-save-dollar
+    { display: none; }
+  &lt;/style&gt;</span>
+                      &lt;span class="price-save-endtime price-save-endtime-current"&gt;&lt;/span&gt;
+                      &lt;span class="price-save-endtime price-save-endtime-another"&gt;&lt;/span&gt;
+
+
+                          &lt;span class="price-save-label"&gt;&lt;/span&gt;
+                          &lt;span class="price-save-dollar"&gt;&lt;/span&gt;
+                          &lt;span class="price-save-percent"&gt;<span ng-hide="$ctrl.email.isCategory">Save: <var>{{($ctrl.email.fullprice - $ctrl.email.saleprice)*100 / $ctrl.email.fullprice | rounded}}%</var></span>&lt;/span&gt;
+              &lt;/li&gt;
+              &lt;li class="price-note"&gt;
+
+              &lt;/li&gt;
+              &lt;li class="price-ship"&gt;
+          <span ng-hide="$ctrl.email.isCategory"><span ng-show="$ctrl.email.freeShipping">Free Shipping</span></span>
+              &lt;/li&gt;
+  &lt;/ul&gt;
+
+
+              &lt;!-- bottom description --&gt;
+
+                  &lt;a href="https://promotions.newegg.com/neemail/latest/index-landing.aspx?cm_sp=Homepage_EMC-_-P1-_-<var>{{$ctrl.email.sku}}</var>-_-<var>{{$ctrl.email.date}}</var>" class="item-title" onclick="if(typeof s != 'undefined') {s.linkTrackEvents=''; s.linkTrackVars='prop26,eVar50';
+      s.prop26='-_--_--_--_--_-<var>{{$ctrl.email.campaignID}}</var>_DEAL_STATIC-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
+      s.eVar50='-_--_--_--_--_-<var>{{$ctrl.email.campaignID}}</var>_DEAL_STATIC-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
+      s.tl(this,'o','Target Banner click monetate');}"&gt;
+                <var>{{$ctrl.email.producttitle | scrubbed}}</var>
+
+                  &lt;/a&gt;
+
+
+              &lt;!--promption info--&gt;
+              &lt;p class="item-promo"&gt;<span ng-hide="$ctrl.email.isCategory">&lt;i class="item-promo-icon" data-reactid=".0.0"&gt;&amp;nbsp;&lt;/i&gt;<var>{{$ctrl.email.promotext}}</var></span>&lt;/p&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/div&gt;
+
+      &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="featured-deal-bottom"&gt;
+      &lt;a href="https://promotions.newegg.com/neemail/latest/index-landing.aspx?cm_sp=Homepage_EMC-_-P1-_-<var>{{$ctrl.email.sku}}</var>-_-<var>{{$ctrl.email.date}}</var>" class="featured-deal-bottom-more" onclick="if(typeof s != 'undefined') {s.linkTrackEvents=''; s.linkTrackVars='prop26,eVar50';
+      s.prop26='-_--_--_--_--_-<var>{{$ctrl.email.campaignID}}</var>_DEAL_STATIC-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
+      s.eVar50='-_--_--_--_--_-<var>{{$ctrl.email.campaignID}}</var>_DEAL_STATIC-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
+      s.tl(this,'o','Target Banner click monetate');}"&gt;
+          See All Email Deals &lt;i class="fa fa-caret-right"&gt;&lt;/i&gt;
+      &lt;/a&gt;
+  &lt;/div&gt;
+    </pre>
+  </div>
+      <!-- END HTML Code Preview -->
+    </div>
+  </div>
+
+</div>
+

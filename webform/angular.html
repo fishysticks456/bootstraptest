@@ -94,6 +94,20 @@
       .btn-group-sm.btn, .btn-sm {
         margin-top: 3px;
       }
+      .btn-outline-primary:not(:disabled):not(.disabled):not(:hover).active,
+      .btn-outline-primary:not(:disabled):not(.disabled):not(:hover):active,
+      .show>.btn-outline-primary.dropdown-toggle {
+        color: #fff;
+        background-color: #328bea;
+        border-color: #007bff;
+      }
+      .btn-outline-secondary:not(:disabled):not(.disabled):not(:hover).active,
+      .btn-outline-secondary:not(:disabled):not(.disabled):not(:hover):active,
+      .show>.btn-outline-secondary.dropdown-toggle {
+        color: #fff;
+        background-color: #84898e;
+        border-color: #6c757d;
+      }
       .form-output:before, #Devlog:before {
         content: "";
         display: table;
@@ -123,7 +137,7 @@
         text-align: center;
       }
       #flyout-select {
-        margin: 0 10px;
+        margin: 10px;
       
     </style>
 
@@ -159,9 +173,9 @@
           <li class="nav-item">
             <a class="nav-link" id="email-tab" data-toggle="tab" href="#email-abt" role="tab" aria-controls="email-abt" aria-selected="false">Email Homepage ABT</a>
           </li>
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link disabled" id="flyout-tab" data-toggle="tab" href="#flyouts" role="tab" aria-controls="flyout" aria-selected="false">Flyout</a>
-          </li>
+          </li>-->
         </ul>
       </nav>
       
@@ -190,7 +204,7 @@
                 </label><br>
                 <label>*Banner href :
                   <input ng-model="dym.banner.href" name="href" type="text"
-                         placeholder="http://localhost/webdev/amp/index.html" size="36" value="">
+                         placeholder="https://www.newegg.com" size="36" value="">
                 </label><br>
                 <label>*Banner img :
                   <input ng-model="dym.banner.bannerLink" name="bannerLink" type="text"
@@ -200,6 +214,10 @@
                   <textarea ng-model="dym.banner.alt" name="alt" type="text"
                             placeholder="Alt text for banners" cols="36" rows="3" value=""></textarea>
                 </label><br>
+             
+                <!--<label>
+                  <input ng-model="dym.banner.setting.flyout" name="banner.setting.flyout" type="checkbox"> Flyout banner
+                </label><br>-->
                 
                 </form>
               
@@ -208,42 +226,47 @@
               <form name="WebformSettings">
                 <span style="text-align:right; display:inherit;"><button type="button" class="clear-all btn btn-sm btn-link">Clear All</button> <button type="button" class="select-all btn btn-sm btn-link">Select All</button> </span>
                 <h4>Desktop Banners</h4>
-                <button type="button" data-toggle="button" data-label="HT" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>HT</button>
-                <button type="button" data-toggle="button" data-label="UT" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>UT</button>
-                <button type="button" data-toggle="button" data-label="PB" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>PB</button>
-                <button type="button" data-toggle="button" data-label="BB" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>BB</button>
+                <div class="btn-group">
+                  <button type="button" data-toggle="button" data-label="HT" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>HT</button>
+                  <button type="button" data-toggle="button" data-label="UT" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>UT</button>
+                  <button type="button" data-toggle="button" data-label="PB" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>PB</button>
+                  <button type="button" data-toggle="button" data-label="BB" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>BB</button>
+                </div>
                 <br/>
                 <br/>
                 <h4>Mobile Banners</h4>
-                <button type="button" data-toggle="button" data-label="MID5" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>MID5</button>
-                <button type="button" data-toggle="button" data-label="FOOT" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>FOOT</button>
-                <button type="button" data-toggle="button" data-label="SHARE" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>SHARE</button>
-                <button type="button" data-toggle="button" data-label="STORE" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>STORE</button>
-                <br/>
-                <br/>
-                <!--
-                <h4>Flyouts
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                  <button ng-click="dym.flysm=!dym.flysm" type="checkbox" name="flyoutsm" data-label="flyoutsm" class="btn btn-sm btn-secondary active" aria-pressed="true" active autocomplete="off"> 160x360 </button>
-                  <button ng-click="dym.flylg=!dym.flylg"  type="checkbox" name="flyoutlg" data-label="flyoutlg" class="btn btn-sm btn-secondary active" aria-pressed="true" active autocomplete="off"> 160x600 </button>
+                <div class="btn-group">
+                  <button type="button" data-toggle="button" data-label="MID5" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>MID5</button>
+                  <button type="button" data-toggle="button" data-label="FOOT" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>FOOT</button>
+                  <button type="button" data-toggle="button" data-label="SHARE" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>SHARE</button>
+                  <button type="button" data-toggle="button" data-label="STORE" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>STORE</button>
                 </div>
-                </h4>
-                <select ng-show="dym.flysm||dym.flylg" id="flyout-select">
-                  <option ng-model="dym.flyout" value="">Select a flyout menu</option>
-                  <option ng-model="dym.flyout" value="NV1">Systems (PCs)</option>
-                  <option ng-model="dym.flyout" value="NV2">Components</option>
-                  <option ng-model="dym.flyout" value="NV3">Electronics</option>
-                  <option ng-model="dym.flyout" value="NV4">Gaming</option>
-                  <option ng-model="dym.flyout" value="NV5">Networking</option>
-                  <option ng-model="dym.flyout" value="NV6">Office Solutions</option>
-                  <option ng-model="dym.flyout" value="NV7">Software</option>
-                  <option ng-model="dym.flyout" value="NV8">Automotive</option>
-                  <option ng-model="dym.flyout" value="NV9">Home &amp; Tools</option>
-                  <option ng-model="dym.flyout" value="NV10">Health &amp; Sports</option>
-                  <option ng-model="dym.flyout" value="NV11">Apparel &amp; Accessories</option>
-                  <option ng-model="dym.flyout" value="NV12">Hobbies &amp; Toys</option>
+                <br/>
+                <br/>
+                
+                <h4>Flyouts</h4>
+                
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-sm btn-outline-secondary"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="" autocomplete="off">None</label>
+                  <label class="btn btn-sm btn-outline-secondary active"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="160_360" autocomplete="off">160_360</label>
+                  <label class="btn btn-sm btn-outline-secondary"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="160_600" autocomplete="off">160_600</label>
+                </div>
+                <br/>
+                <select ng-show="dym.flyout.size" ng-model="dym.flyout.nav" id="flyout-select">
+                  <option value="NV1">Systems (PCs) (NV1)</option>
+                  <option value="NV2">Components (NV2)</option>
+                  <option value="NV3">Electronics (NV3)</option>
+                  <option value="NV4">Gaming (NV4)</option>
+                  <option value="NV5">Networking (NV5)</option>
+                  <option value="NV6">Office Solutions (NV6)</option>
+                  <option value="NV7">Software (NV7)</option>
+                  <option value="NV8">Automotive (NV8)</option>
+                  <option value="NV9">Home &amp; Tools (NV9)</option>
+                  <option value="NV10">Health &amp; Sports (NV10)</option>
+                  <option value="NV11">Apparel &amp; Accessories (NV11)</option>
+                  <option value="NV12">Hobbies &amp; Toys (NV12)</option>
                 </select>
-                <br>-->
+                <br><br>
                 <button type="button" data-label="save-banners" class="btn btn-sm btn-outline-secondary save-banners" onclick="saveBanners();" ng-click="dym.save()">Download Banners as HTML</button>
               </form>
             </div>
@@ -268,10 +291,9 @@
             <banner-type dym="dym.banner" type="FOOT" title="Mobile Footer Banner" size="640x100" mobile="true"></banner-type>
             <banner-type dym="dym.banner" type="SHARE" title="Mobile Product anner" size="640x100" mobile="true"></banner-type>
             <banner-type dym="dym.banner" type="STORE" title="Mobile EventStore Banner" size="640x100" mobile="true"></banner-type>
-          
-            <!--
-            <banner-type dym="dym" type="{{dym.flyout}}" title="Small Nav Flyout Banner" size="160x360" flyout="true"></banner-type>
-            <banner-type dym="dym" type="{{dym.flyout}}" title="Large Nav Flyout Banner" size="160x600" flyout="true"></banner-type>-->
+            
+            <banner-type ng-if="dym.flyout.size" dym="dym.banner" type="{{dym.flyout.nav}}" title="Flyout Banner" size="{{dym.flyout.size}}" flyout="true"></banner-type>
+            
           </div>
           <!-- End Form Output -->
           
@@ -352,7 +374,7 @@
                 <!--<button type="button" data-toggle="button" data-label="UT" class="btn btn-sm btn-secondary" href="#" aria-pressed="false" active>Combo</button>-->
                 
                 
-                  <button type="button" data-label="save-banners" class="btn btn-sm btn-outline-secondary save-banners" onclick="saveBanners();">Download Email Homepage ABT HTML</button>
+                  <button type="button" data-label="save-banners" class="btn btn-sm btn-outline-secondary save-banners" onclick="saveBanners();" ng-click="dym.save()">Download Email Homepage ABT HTML</button>
                 </form>
               
             </div>
@@ -369,9 +391,9 @@
         <!-- END Email ABT tab -->
         
         <!-- Flyout tab -->
-        <div class="container-fluid tab-pane fade" id="flyouts" role="tabpanel" aria-labelledby="flyout-tab">
+        <!--<div class="container-fluid tab-pane fade" id="flyouts" role="tabpanel" aria-labelledby="flyout-tab">
           Flyout stuff goes here
-        </div>
+        </div>-->
         <!-- END Flyout tab -->
 
         <!-- Sticky Footer -->
@@ -400,26 +422,25 @@
     
 
 <script type="text/javascript">
-  
-  // Hide unnecessary banners that don't need to be downloaded.
-  var WebformSettings = jQuery("#WebformSettings");
-  jQuery("button.btn-outline-primary", WebformSettings).map(function(i,n) {
-    jQuery(n).click(function() {
-      jQuery("." + jQuery(this).attr("data-label")).slideToggle();
-    })
-  });
-  // Clear all + Select all buttons
-  jQuery("button.clear-all", WebformSettings).click(function() {
-    jQuery(".btn-outline-primary.active", WebformSettings).click();
-  });
-  jQuery("button.select-all", WebformSettings).click(function() {
-    jQuery(".btn-outline-primary:not(.active)", WebformSettings).click();
-  });
-  
-  
-  
-  
-  jQuery("#Loader").hide();
+
+// Hide unnecessary banners that don't need to be downloaded.
+var WebformSettings = jQuery("#WebformSettings");
+jQuery("button.btn-outline-primary", WebformSettings).map(function(i,n) {
+  jQuery(n).click(function() {
+    jQuery("." + jQuery(this).attr("data-label")).slideToggle();
+  })
+});
+// Clear all + Select all buttons
+jQuery("button.clear-all", WebformSettings).click(function() {
+  jQuery(".btn-group-toggle input[type='radio']:first", WebformSettings).click()
+  jQuery(".btn-outline-primary.active", WebformSettings).click();
+});
+jQuery("button.select-all", WebformSettings).click(function() {
+  jQuery(".btn-outline-primary:not(.active)", WebformSettings).click();
+});
+
+// Hide "Loading..." text
+jQuery("#Loader").hide();
 
 // Function to download data to a file
 function download(data, filename, type) {
@@ -507,7 +528,7 @@ var alertUser = function (message) {
     var alertModal = jQuery("#alertUser");
     jQuery(".alert", alertModal).text(message);
     jQuery(alertModal).modal("show");
-    setTimeout(function() {jQuery(alertModal).modal("hide");}, 2000);
+    setTimeout(function() {jQuery(alertModal).modal("hide");}, 4000);
 }
     </script>
     

@@ -4,7 +4,13 @@ angular.module('dymApp', [])
 .filter('resize', function() {
     return function(banner,size) {
       //console.log(size);
-      return banner.replace(/\d\d?\d?x\d\d?\d?/,size);
+      var newbanner;
+      if( size == "160_360" || size == "160_600") {
+        newbanner = banner.replace(/\d\d?\d?\d?x\d\d?\d?\d?/, "/Flyout_" + size);
+      } else {
+        newbanner = banner.replace(/\d\d?\d?\d?x\d\d?\d?\d?/,size);
+      }
+      return newbanner;
     };
   })
 .filter('dollars', function() {
@@ -46,6 +52,11 @@ angular.module('dymApp', [])
             String.fromCharCode(Math.floor((n-26) / 27) + 65) + String.fromCharCode(((n-1) % 26) + 65));
   };
 })
+.filter('index', function() {
+  return function(flyoutnav) {
+    return parseInt(flyoutnav.split("NV")[1]) - 1
+  };
+})
 
 .controller('DYMController', function() {
   var dym = this;
@@ -54,7 +65,7 @@ angular.module('dymApp', [])
   // Set default values
   dym.banner = {
     campaignID : "DYM-MKS-19000",
-    href : "",
+    href : "https://www.newegg.com",
     bannerLink : "https://dummyimage.com/970x50/f00/fff",
     alt : "Alt text for banners",
     customerSeg : "STATIC",
@@ -79,6 +90,10 @@ angular.module('dymApp', [])
     count : 260
     
   };
+  dym.flyout = {
+    size : "160_360",
+    nav : "NV1"
+  }
   
   dym.copy = {
     banner : {},
@@ -106,9 +121,7 @@ angular.module('dymApp', [])
     if(localStorage.hasOwnProperty("dym")) dym.load();
   };
   
-  dym.flylg = true;
-  dym.flysm = true;
-  dym.flyout = "";
+  
   
   
 });

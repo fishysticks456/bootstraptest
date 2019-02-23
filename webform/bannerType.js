@@ -44,10 +44,11 @@
     bindings: {
       type:'@', // Banner type. Ex: HT, UT, PB, BB
       title:'@', // Banner title. Ex: Homepage top, Universal Top, Product Page Box, Bullet
-      size:'@', // Banner size. Ex: "970x50", "970x90", "300_250", "374x50"
+      size:'@', // Banner size. Ex: "970x50", "970x90", "300_250", "374x50", "flysm", "flylg"
       bg:'@', // bg='true' if banner requires a background-bg: url() in its styling
       mobile:'@',
-      dym:'<'
+      dym:'<',
+      flyout:'@'
     },
     controller : BannerController
 
@@ -65,10 +66,10 @@ UT
 	s.prop26='-_--_--_--_--_-DYMX-MKS-19010_UT_STATIC-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
 	s.eVar50='-_--_--_--_--_-DYMX-MKS-19010_UT_STATIC-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
 	s.tl(this,'o','Target Banner click monetate');">
-		<img src="//promotions.newegg.com/nepro/19-0223/970x90.jpg" style="vertical-align: middle" alt="Deals for Tech Lovers" title="Deals for Tech Lovers" onload="s.linkTrackVars='prop26,eVar50';        
+		<img src="//promotions.newegg.com/nepro/19-0223/970x90.jpg" style="vertical-align: middle" alt="Deals for Tech Lovers" title="Deals for Tech Lovers" onload="s.linkTrackVars='prop26,eVar50';
         s.prop26='-_--_--_--_--_-DYMX-MKS-19010_UT_STATIC-_-Pers_MNT_Imp-_--_-'+new Date().toISOString()+'-_-';
         s.eVar50='-_--_--_--_--_-DYMX-MKS-19010_UT_STATIC-_-Pers_MNT_Imp-_--_-'+new Date().toISOString()+'-_-';
-        s.tl(this,'o','Target Banner impression monetate');"> 
+        s.tl(this,'o','Target Banner impression monetate');">
 	</a>
 </center>    </div>
 

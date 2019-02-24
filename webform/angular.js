@@ -91,7 +91,7 @@ angular.module('dymApp', [])
     
   };
   dym.flyout = {
-    size : "160_360",
+    size : "",
     nav : "NV1"
   }
   

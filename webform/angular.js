@@ -6,7 +6,7 @@ angular.module('dymApp', [])
       //console.log(size);
       var newbanner;
       if( size == "160_360" || size == "160_600") {
-        newbanner = banner.replace(/\d\d?\d?\d?x\d\d?\d?\d?/, "/Flyout_" + size);
+        newbanner = banner.replace(/\d\d?\d?\d?x\d\d?\d?\d?/, "Flyout_" + size);
       } else {
         newbanner = banner.replace(/\d\d?\d?\d?x\d\d?\d?\d?/,size);
       }

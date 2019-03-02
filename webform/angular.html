@@ -136,8 +136,6 @@
       #FormOutput {
         text-align: center;
       }
-      #flyout-select {
-        margin: 10px;
       
     </style>
 
@@ -206,7 +204,7 @@
                   <input ng-model="dym.banner.href" name="href" type="text"
                          placeholder="https://www.newegg.com" size="36" value="">
                 </label><br>
-                <label>*Banner img :
+                <label>*<span ng-show="dym.banner.settings.isFlyout">Flyout </span>Banner img :
                   <input ng-model="dym.banner.bannerLink" name="bannerLink" type="text"
                          placeholder="https://dummyimage.com/970x50/f00/fff" size="36" value="" >
                 </label><br>
@@ -214,10 +212,9 @@
                   <textarea ng-model="dym.banner.alt" name="alt" type="text"
                             placeholder="Alt text for banners" cols="36" rows="3" value=""></textarea>
                 </label><br>
-             
-                <!--<label>
-                  <input ng-model="dym.banner.setting.flyout" name="banner.setting.flyout" type="checkbox"> Flyout banner
-                </label><br>-->
+                <label>
+                  <input ng-model="dym.banner.settings.isFlyout" name="banner.settings.isFlyout" type="checkbox"> Flyout banner
+                </label><br>
                 
                 </form>
               
@@ -244,29 +241,30 @@
                 <br/>
                 <br/>
                 
-                <h4>Flyouts</h4>
-                
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                  <label class="btn btn-sm btn-outline-secondary active"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="" autocomplete="off">None</label>
-                  <label class="btn btn-sm btn-outline-secondary"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="160_360" autocomplete="off">160_360</label>
-                  <label class="btn btn-sm btn-outline-secondary"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="160_600" autocomplete="off">160_600</label>
+                <div ng-show="dym.banner.settings.isFlyout">
+                  <h4>Flyouts</h4>
+                  <!--<div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-sm btn-outline-secondary active"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="" autocomplete="off">None</label>
+                    <label class="btn btn-sm btn-outline-secondary"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="160_360" autocomplete="off">160_360</label>
+                    <label class="btn btn-sm btn-outline-secondary"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="160_600" autocomplete="off">160_600</label>
+                  </div>
+                  <br/>-->
+                  <select  ng-model="dym.banner.flyoutnav" id="flyout-select">
+                    <option value="NV1">Systems (PCs) (NV1)</option>
+                    <option value="NV2">Components (NV2)</option>
+                    <option value="NV3">Electronics (NV3)</option>
+                    <option value="NV4">Gaming (NV4)</option>
+                    <option value="NV5">Networking (NV5)</option>
+                    <option value="NV6">Office Solutions (NV6)</option>
+                    <option value="NV7">Software (NV7)</option>
+                    <option value="NV8">Automotive (NV8)</option>
+                    <option value="NV9">Home &amp; Tools (NV9)</option>
+                    <option value="NV10">Health &amp; Sports (NV10)</option>
+                    <option value="NV11">Apparel &amp; Accessories (NV11)</option>
+                    <option value="NV12">Hobbies &amp; Toys (NV12)</option>
+                  </select>
                 </div>
-                <br/>
-                <select ng-show="dym.flyout.size" ng-model="dym.flyout.nav" id="flyout-select">
-                  <option value="NV1">Systems (PCs) (NV1)</option>
-                  <option value="NV2">Components (NV2)</option>
-                  <option value="NV3">Electronics (NV3)</option>
-                  <option value="NV4">Gaming (NV4)</option>
-                  <option value="NV5">Networking (NV5)</option>
-                  <option value="NV6">Office Solutions (NV6)</option>
-                  <option value="NV7">Software (NV7)</option>
-                  <option value="NV8">Automotive (NV8)</option>
-                  <option value="NV9">Home &amp; Tools (NV9)</option>
-                  <option value="NV10">Health &amp; Sports (NV10)</option>
-                  <option value="NV11">Apparel &amp; Accessories (NV11)</option>
-                  <option value="NV12">Hobbies &amp; Toys (NV12)</option>
-                </select>
-                <br><br>
+                <br>
                 <button type="button" data-label="save-banners" class="btn btn-sm btn-outline-secondary save-banners" onclick="saveBanners();" ng-click="dym.save()">Download Banners as HTML</button>
               </form>
             </div>
@@ -292,7 +290,7 @@
             <banner-type dym="dym.banner" type="SHARE" title="Mobile Product anner" size="640x100" mobile="true"></banner-type>
             <banner-type dym="dym.banner" type="STORE" title="Mobile EventStore Banner" size="640x100" mobile="true"></banner-type>
             
-            <banner-type ng-if="dym.flyout.size" dym="dym.banner" type="{{dym.flyout.nav}}" title="Flyout Banner" size="{{dym.flyout.size}}" flyout="true"></banner-type>
+            <banner-type ng-if="dym.banner.settings.isFlyout" dym="dym.banner" type="{{dym.banner.flyoutnav}}" title="Flyout Banner" size="" flyout="true"></banner-type>
             
           </div>
           <!-- End Form Output -->

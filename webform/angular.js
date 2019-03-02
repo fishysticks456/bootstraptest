@@ -7,6 +7,8 @@ angular.module('dymApp', [])
       var newbanner;
       if( size == "160_360" || size == "160_600") {
         newbanner = banner.replace(/\d\d?\d?\d?x\d\d?\d?\d?/, "Flyout_" + size);
+      } else if ( size === "") {
+        newbanner = banner;
       } else {
         newbanner = banner.replace(/\d\d?\d?\d?x\d\d?\d?\d?/,size);
       }
@@ -41,7 +43,7 @@ angular.module('dymApp', [])
   })
 .filter('stringify', function() {
   return function(obj) {
-    return JSON.stringify(obj);
+    return typeof obj.length != 'undefined' ? JSON.stringify({obj}) : JSON.stringify(obj);
   };
 })
 .filter('alphabetized', function() {
@@ -54,7 +56,7 @@ angular.module('dymApp', [])
 })
 .filter('index', function() {
   return function(flyoutnav) {
-    return parseInt(flyoutnav.split("NV")[1]) - 1
+    return parseInt(flyoutnav.split("NV")[1]) - 1;
   };
 })
 
@@ -69,9 +71,11 @@ angular.module('dymApp', [])
     bannerLink : "https://dummyimage.com/970x50/f00/fff",
     alt : "Alt text for banners",
     customerSeg : "STATIC",
+    flyoutnav : "NV1",
     settings : {
       precode : false,
-      preview : true
+      preview : true,
+      isFlyout : true
     }
   };
 
@@ -90,10 +94,10 @@ angular.module('dymApp', [])
     count : 260
     
   };
-  dym.flyout = {
+  /*dym.flyout = {
     size : "",
     nav : "NV1"
-  }
+  };*/
   
   dym.copy = {
     banner : {},

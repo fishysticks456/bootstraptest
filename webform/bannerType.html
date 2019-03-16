@@ -8,7 +8,7 @@
 <span class="copytext" data-target="{{$ctrl.dym.campaignID | lowercase}}_{{$ctrl.type | lowercase}}_{{$ctrl.dym.customerSeg | lowercase}}" onclick="copyToClipboard(this)" ng-show="$ctrl.dym.settings.precode">Copy to Clipboard</span>
 <pre class="text-area" id="{{$ctrl.dym.campaignID | lowercase}}_{{$ctrl.type | lowercase}}_{{$ctrl.dym.customerSeg | lowercase}}" ng-show="$ctrl.dym.settings.precode">
 &lt;center&gt;
-  &lt;a href="<var>{{$ctrl.dym.href}}</var>" target="_blank" <span ng-if="$ctrl.bg">style="background: url('<var>{{$ctrl.dym.bannerLink | resize:"bg_"+$ctrl.size}}</var>') repeat-x; display:block;"</span>
+  &lt;a href="<var>{{$ctrl.dym.href}}</var>" <span ng-if="$ctrl.size!='640x100' ">target="_blank"</span> <span ng-if="$ctrl.bg">style="background: url('<var>{{$ctrl.dym.bannerLink | resize:"bg_"+$ctrl.size}}</var>') repeat-x; display:block;"</span>
     onclick="if(typeof s != 'undefined') {s.linkTrackEvents=''; s.linkTrackVars='prop26,eVar50';
     s.prop26='-_--_--_--_--_-<var>{{$ctrl.dym.campaignID}}</var>_<var>{{$ctrl.type}}</var>_<var>{{$ctrl.dym.customerSeg}}</var>-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
     s.eVar50='-_--_--_--_--_-<var>{{$ctrl.dym.campaignID}}</var>_<var>{{$ctrl.type}}</var>_<var>{{$ctrl.dym.customerSeg}}</var>-_-Pers_MNT-_--_-'+new Date().toISOString()+'-_-';
@@ -37,7 +37,7 @@ NEG(dom).on(&#x22;Switch_Activate&#x22;,function(){
 &#x3C;/script&#x3E;</div></pre>
   
   <div class="banner-preview" ng-show="$ctrl.dym.settings.preview">
-    <center><a href="{{$ctrl.dym.href}}" style="background: url('{{$ctrl.dym.bannerLink | resize:'bg_'+$ctrl.size}}')') repeat-x;" ><img ng-src="{{$ctrl.dym.bannerLink | resize:$ctrl.size}}" alt="{{$ctrl.dym.alt}}" title="{{$ctrl.dym.alt}}"></a></center>
+    <center><a href="{{$ctrl.dym.href}}" style="background: url('{{$ctrl.dym.bannerLink | resize:'bg_'+$ctrl.size}}') repeat-x;" ><img ng-src="{{$ctrl.dym.bannerLink | resize:$ctrl.size}}" alt="{{$ctrl.dym.alt}}" title="{{$ctrl.dym.alt}}"></a></center>
   </div>
 
 </div>

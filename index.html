@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>AMP - Rose Gold</title>
     
-    <link rel="canonical" href="http://www.goldieyoung.coml">
+    <link rel="canonical" href="http://www.goldieyoung.com">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <script type="application/ld+json">
     {
@@ -17,89 +17,106 @@
     ]
     }
     </script>
+    
+    <!-- Offline scripts -->
+    <!--<script async src="js/v0.js"></script>
+    <script async custom-element="amp-selector" src="js/amp-selector-0.1.js"></script>
+    <script async custom-element="amp-bind" src="js/amp-bind-0.1.js"></script>
+    <script async custom-element="amp-form" src="js/amp-form-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="js/amp-mustache-0.2.js"></script>
+    <link href="css/quicksand.font.css" rel="stylesheet">-->
+    
+    <!-- Online scripts -->
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
     <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
     <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+    
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Vollkorn" rel="stylesheet">
     <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
     <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
   <style amp-custom>
+  /*!
+ * Bootstrap v4.1.3 (https://getbootstrap.com/)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */:root{--blue:#007bff;--indigo:#6610f2;--purple:#6f42c1;--pink:#e83e8c;--red:#dc3545;--orange:#fd7e14;--yellow:#ffc107;--green:#28a745;--teal:#20c997;--cyan:#17a2b8;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#007bff;--secondary:#6c757d;--success:#28a745;--info:#17a2b8;--warning:#ffc107;--danger:#dc3545;--light:#f8f9fa;--dark:#343a40;--breakpoint-xs:0;--breakpoint-sm:300px;--breakpoint-md:600px;--breakpoint-lg:900px;--breakpoint-xl:1200px;--font-family-sans-serif:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}*,::after,::before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-ms-overflow-style:scrollbar;-webkit-tap-highlight-color:transparent}article,aside,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;text-align:left;background-color:#fff}[tabindex="-1"]:focus{outline:0}hr{box-sizing:content-box;height:0;overflow:visible}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem}p{margin-top:0;margin-bottom:1rem}abbr[data-original-title],abbr[title]{text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;border-bottom:0}address{margin-bottom:1rem;font-style:normal;line-height:inherit}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}dfn{font-style:italic}b,strong{font-weight:bolder}small{font-size:80%}sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#007bff;text-decoration:none;background-color:transparent;-webkit-text-decoration-skip:objects}a:not([href]):not([tabindex]){color:inherit;text-decoration:none}a:not([href]):not([tabindex]):focus,a:not([href]):not([tabindex]):hover{color:inherit;text-decoration:none}a:not([href]):not([tabindex]):focus{outline:0}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em}pre{margin-top:0;margin-bottom:1rem;overflow:auto;-ms-overflow-style:scrollbar}figure{margin:0 0 1rem}img{vertical-align:middle;border-style:none}svg{overflow:hidden;vertical-align:middle}table{border-collapse:collapse}caption{padding-top:.75rem;padding-bottom:.75rem;color:#6c757d;text-align:left;caption-side:bottom}th{text-align:inherit}label{display:inline-block;margin-bottom:.5rem}button{border-radius:0}button:focus{outline:1px dotted;outline:5px auto -webkit-focus-ring-color}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=date],input[type=datetime-local],input[type=month],input[type=time]{-webkit-appearance:listbox}textarea{overflow:auto;resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{display:block;width:100%;max-width:100%;padding:0;margin-bottom:.5rem;font-size:1.5rem;line-height:inherit;color:inherit;white-space:normal}progress{vertical-align:baseline}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:none}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}summary{display:list-item;cursor:pointer}template{display:none}[hidden]{display:none;}.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{margin-bottom:.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}.h1,h1{font-size:2.5rem}.h2,h2{font-size:2rem}.h3,h3{font-size:1.75rem}.h4,h4{font-size:1.5rem}.h5,h5{font-size:1.25rem}.h6,h6{font-size:1rem}.lead{font-size:1.25rem;font-weight:300}.display-1{font-size:6rem;font-weight:300;line-height:1.2}.display-2{font-size:5.5rem;font-weight:300;line-height:1.2}.display-3{font-size:4.5rem;font-weight:300;line-height:1.2}.display-4{font-size:3.5rem;font-weight:300;line-height:1.2}hr{margin-top:1rem;margin-bottom:1rem;border:0;border-top:1px solid rgba(0,0,0,.1)}.small,small{font-size:80%;font-weight:400}.mark,mark{padding:.2em;background-color:#fcf8e3}.list-unstyled{padding-left:0;list-style:none}.list-inline{padding-left:0;list-style:none}.list-inline-item{display:inline-block}.list-inline-item:not(:last-child){margin-right:.5rem}.initialism{font-size:90%;text-transform:uppercase}.blockquote{margin-bottom:1rem;font-size:1.25rem}.blockquote-footer{display:block;font-size:80%;color:#6c757d}.blockquote-footer::before{content:"\2014 \00A0"}.img-fluid{max-width:100%;height:auto}.img-thumbnail{padding:.25rem;background-color:#fff;border:1px solid #dee2e6;border-radius:.25rem;max-width:100%;height:auto}.figure{display:inline-block}.figure-img{margin-bottom:.5rem;line-height:1}.figure-caption{font-size:90%;color:#6c757d}code{font-size:87.5%;color:#e83e8c;word-break:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:87.5%;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:100%;font-weight:700}pre{display:block;font-size:87.5%;color:#212529}pre code{font-size:inherit;color:inherit;word-break:normal}.pre-scrollable{max-height:340px;overflow-y:scroll}.container{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+ .row {
+   width: 100%;
+ }
+ @media (min-width:300px){.row{max-width:400px} .hide-sm {display:none;} .show-sm {display:block;} textarea {width: 260px;}}
+ @media (min-width:600px){.row{max-width:600px} .hide-md {display:none;} .show-md {display:block;} textarea {width: 360px;} input[type=email] {width: 260px;} .contact-form input[type=submit] {position: absolute; bottom: 0px;}}
+ @media (min-width:900px){.row{max-width:900px} .hide-lg {display:none;} .show-lg {display:block;}}
+ /*@media (min-width:1200px){.row{max-width:1200px} .hide-xl {display:none;} .show-xl {display:block;}}*/
+ .container-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}.no-gutters{margin-right:0;margin-left:0}.no-gutters>.col,.no-gutters>[class*=col-]{padding-right:0;padding-left:0}.col,.col-1,.col-10,.col-11,.col-12,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-auto,.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-auto,.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-auto,.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-auto,.col-xl,.col-xl-1,.col-xl-10,.col-xl-11,.col-xl-12,.col-xl-2,.col-xl-3,.col-xl-4,.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9,.col-xl-auto{position:relative;width:100%;min-height:1px;}.col{-ms-flex-preferred-size:0;flex-basis:0;-ms-flex-positive:1;flex-grow:1;max-width:100%}.col-auto{-ms-flex:0 0 auto;flex:0 0 auto;width:auto;max-width:none}.col-1{-ms-flex:0 0 8.333333%;flex:0 0 8.333333%;max-width:8.333333%}.col-2{-ms-flex:0 0 16.666667%;flex:0 0 16.666667%;max-width:16.666667%}.col-3{-ms-flex:0 0 25%;flex:0 0 25%;max-width:25%}.col-4{-ms-flex:0 0 33.333333%;flex:0 0 33.333333%;max-width:33.333333%}.col-5{-ms-flex:0 0 41.666667%;flex:0 0 41.666667%;max-width:41.666667%}.col-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%}.col-7{-ms-flex:0 0 58.333333%;flex:0 0 58.333333%;max-width:58.333333%}.col-8{-ms-flex:0 0 66.666667%;flex:0 0 66.666667%;max-width:66.666667%}.col-9{-ms-flex:0 0 75%;flex:0 0 75%;max-width:75%}.col-10{-ms-flex:0 0 83.333333%;flex:0 0 83.333333%;max-width:83.333333%}.col-11{-ms-flex:0 0 91.666667%;flex:0 0 91.666667%;max-width:91.666667%}.col-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}.order-first{-ms-flex-order:-1;order:-1}.order-last{-ms-flex-order:13;order:13}.order-0{-ms-flex-order:0;order:0}.order-1{-ms-flex-order:1;order:1}.order-2{-ms-flex-order:2;order:2}.order-3{-ms-flex-order:3;order:3}.order-4{-ms-flex-order:4;order:4}.order-5{-ms-flex-order:5;order:5}.order-6{-ms-flex-order:6;order:6}.order-7{-ms-flex-order:7;order:7}.order-8{-ms-flex-order:8;order:8}.order-9{-ms-flex-order:9;order:9}.order-10{-ms-flex-order:10;order:10}.order-11{-ms-flex-order:11;order:11}.order-12{-ms-flex-order:12;order:12}.offset-1{margin-left:8.333333%}.offset-2{margin-left:16.666667%}.offset-3{margin-left:25%}.offset-4{margin-left:33.333333%}.offset-5{margin-left:41.666667%}.offset-6{margin-left:50%}.offset-7{margin-left:58.333333%}.offset-8{margin-left:66.666667%}.offset-9{margin-left:75%}.offset-10{margin-left:83.333333%}.offset-11{margin-left:91.666667%}
+ @media (min-width:300px){.col-sm{-ms-flex-preferred-size:0;flex-basis:0;-ms-flex-positive:1;flex-grow:1;max-width:100%}.col-sm-auto{-ms-flex:0 0 auto;flex:0 0 auto;width:auto;max-width:none}.col-sm-1{-ms-flex:0 0 8.333333%;flex:0 0 8.333333%;max-width:8.333333%}.col-sm-2{-ms-flex:0 0 16.666667%;flex:0 0 16.666667%;max-width:16.666667%}.col-sm-3{-ms-flex:0 0 25%;flex:0 0 25%;max-width:25%}.col-sm-4{-ms-flex:0 0 33.333333%;flex:0 0 33.333333%;max-width:33.333333%}.col-sm-5{-ms-flex:0 0 41.666667%;flex:0 0 41.666667%;max-width:41.666667%}.col-sm-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%}.col-sm-7{-ms-flex:0 0 58.333333%;flex:0 0 58.333333%;max-width:58.333333%}.col-sm-8{-ms-flex:0 0 66.666667%;flex:0 0 66.666667%;max-width:66.666667%}.col-sm-9{-ms-flex:0 0 75%;flex:0 0 75%;max-width:75%}.col-sm-10{-ms-flex:0 0 83.333333%;flex:0 0 83.333333%;max-width:83.333333%}.col-sm-11{-ms-flex:0 0 91.666667%;flex:0 0 91.666667%;max-width:91.666667%}.col-sm-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}.order-sm-first{-ms-flex-order:-1;order:-1}.order-sm-last{-ms-flex-order:13;order:13}.order-sm-0{-ms-flex-order:0;order:0}.order-sm-1{-ms-flex-order:1;order:1}.order-sm-2{-ms-flex-order:2;order:2}.order-sm-3{-ms-flex-order:3;order:3}.order-sm-4{-ms-flex-order:4;order:4}.order-sm-5{-ms-flex-order:5;order:5}.order-sm-6{-ms-flex-order:6;order:6}.order-sm-7{-ms-flex-order:7;order:7}.order-sm-8{-ms-flex-order:8;order:8}.order-sm-9{-ms-flex-order:9;order:9}.order-sm-10{-ms-flex-order:10;order:10}.order-sm-11{-ms-flex-order:11;order:11}.order-sm-12{-ms-flex-order:12;order:12}.offset-sm-0{margin-left:0}.offset-sm-1{margin-left:8.333333%}.offset-sm-2{margin-left:16.666667%}.offset-sm-3{margin-left:25%}.offset-sm-4{margin-left:33.333333%}.offset-sm-5{margin-left:41.666667%}.offset-sm-6{margin-left:50%}.offset-sm-7{margin-left:58.333333%}.offset-sm-8{margin-left:66.666667%}.offset-sm-9{margin-left:75%}.offset-sm-10{margin-left:83.333333%}.offset-sm-11{margin-left:91.666667%}}
+ @media (min-width:600px){.col-md{-ms-flex-preferred-size:0;flex-basis:0;-ms-flex-positive:1;flex-grow:1;max-width:100%}.col-md-auto{-ms-flex:0 0 auto;flex:0 0 auto;width:auto;max-width:none}.col-md-1{-ms-flex:0 0 8.333333%;flex:0 0 8.333333%;max-width:8.333333%}.col-md-2{-ms-flex:0 0 16.666667%;flex:0 0 16.666667%;max-width:16.666667%}.col-md-3{-ms-flex:0 0 25%;flex:0 0 25%;max-width:25%}.col-md-4{-ms-flex:0 0 33.333333%;flex:0 0 33.333333%;max-width:33.333333%}.col-md-5{-ms-flex:0 0 41.666667%;flex:0 0 41.666667%;max-width:41.666667%}.col-md-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%}.col-md-7{-ms-flex:0 0 58.333333%;flex:0 0 58.333333%;max-width:58.333333%}.col-md-8{-ms-flex:0 0 66.666667%;flex:0 0 66.666667%;max-width:66.666667%}.col-md-9{-ms-flex:0 0 75%;flex:0 0 75%;max-width:75%}.col-md-10{-ms-flex:0 0 83.333333%;flex:0 0 83.333333%;max-width:83.333333%}.col-md-11{-ms-flex:0 0 91.666667%;flex:0 0 91.666667%;max-width:91.666667%}.col-md-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}.order-md-first{-ms-flex-order:-1;order:-1}.order-md-last{-ms-flex-order:13;order:13}.order-md-0{-ms-flex-order:0;order:0}.order-md-1{-ms-flex-order:1;order:1}.order-md-2{-ms-flex-order:2;order:2}.order-md-3{-ms-flex-order:3;order:3}.order-md-4{-ms-flex-order:4;order:4}.order-md-5{-ms-flex-order:5;order:5}.order-md-6{-ms-flex-order:6;order:6}.order-md-7{-ms-flex-order:7;order:7}.order-md-8{-ms-flex-order:8;order:8}.order-md-9{-ms-flex-order:9;order:9}.order-md-10{-ms-flex-order:10;order:10}.order-md-11{-ms-flex-order:11;order:11}.order-md-12{-ms-flex-order:12;order:12}.offset-md-0{margin-left:0}.offset-md-1{margin-left:8.333333%}.offset-md-2{margin-left:16.666667%}.offset-md-3{margin-left:25%}.offset-md-4{margin-left:33.333333%}.offset-md-5{margin-left:41.666667%}.offset-md-6{margin-left:50%}.offset-md-7{margin-left:58.333333%}.offset-md-8{margin-left:66.666667%}.offset-md-9{margin-left:75%}.offset-md-10{margin-left:83.333333%}.offset-md-11{margin-left:91.666667%}}
+ @media (min-width:900px){.col-lg{-ms-flex-preferred-size:0;flex-basis:0;-ms-flex-positive:1;flex-grow:1;max-width:100%}.col-lg-auto{-ms-flex:0 0 auto;flex:0 0 auto;width:auto;max-width:none}.col-lg-1{-ms-flex:0 0 8.333333%;flex:0 0 8.333333%;max-width:8.333333%}.col-lg-2{-ms-flex:0 0 16.666667%;flex:0 0 16.666667%;max-width:16.666667%}.col-lg-3{-ms-flex:0 0 25%;flex:0 0 25%;max-width:25%}.col-lg-4{-ms-flex:0 0 33.333333%;flex:0 0 33.333333%;max-width:33.333333%}.col-lg-5{-ms-flex:0 0 41.666667%;flex:0 0 41.666667%;max-width:41.666667%}.col-lg-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%}.col-lg-7{-ms-flex:0 0 58.333333%;flex:0 0 58.333333%;max-width:58.333333%}.col-lg-8{-ms-flex:0 0 66.666667%;flex:0 0 66.666667%;max-width:66.666667%}.col-lg-9{-ms-flex:0 0 75%;flex:0 0 75%;max-width:75%}.col-lg-10{-ms-flex:0 0 83.333333%;flex:0 0 83.333333%;max-width:83.333333%}.col-lg-11{-ms-flex:0 0 91.666667%;flex:0 0 91.666667%;max-width:91.666667%}.col-lg-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}.order-lg-first{-ms-flex-order:-1;order:-1}.order-lg-last{-ms-flex-order:13;order:13}.order-lg-0{-ms-flex-order:0;order:0}.order-lg-1{-ms-flex-order:1;order:1}.order-lg-2{-ms-flex-order:2;order:2}.order-lg-3{-ms-flex-order:3;order:3}.order-lg-4{-ms-flex-order:4;order:4}.order-lg-5{-ms-flex-order:5;order:5}.order-lg-6{-ms-flex-order:6;order:6}.order-lg-7{-ms-flex-order:7;order:7}.order-lg-8{-ms-flex-order:8;order:8}.order-lg-9{-ms-flex-order:9;order:9}.order-lg-10{-ms-flex-order:10;order:10}.order-lg-11{-ms-flex-order:11;order:11}.order-lg-12{-ms-flex-order:12;order:12}.offset-lg-0{margin-left:0}.offset-lg-1{margin-left:8.333333%}.offset-lg-2{margin-left:16.666667%}.offset-lg-3{margin-left:25%}.offset-lg-4{margin-left:33.333333%}.offset-lg-5{margin-left:41.666667%}.offset-lg-6{margin-left:50%}.offset-lg-7{margin-left:58.333333%}.offset-lg-8{margin-left:66.666667%}.offset-lg-9{margin-left:75%}.offset-lg-10{margin-left:83.333333%}.offset-lg-11{margin-left:91.666667%}}
+ @media (min-width:1200px){.col-xl{-ms-flex-preferred-size:0;flex-basis:0;-ms-flex-positive:1;flex-grow:1;max-width:100%}.col-xl-auto{-ms-flex:0 0 auto;flex:0 0 auto;width:auto;max-width:none}.col-xl-1{-ms-flex:0 0 8.333333%;flex:0 0 8.333333%;max-width:8.333333%}.col-xl-2{-ms-flex:0 0 16.666667%;flex:0 0 16.666667%;max-width:16.666667%}.col-xl-3{-ms-flex:0 0 25%;flex:0 0 25%;max-width:25%}.col-xl-4{-ms-flex:0 0 33.333333%;flex:0 0 33.333333%;max-width:33.333333%}.col-xl-5{-ms-flex:0 0 41.666667%;flex:0 0 41.666667%;max-width:41.666667%}.col-xl-6{-ms-flex:0 0 50%;flex:0 0 50%;max-width:50%}.col-xl-7{-ms-flex:0 0 58.333333%;flex:0 0 58.333333%;max-width:58.333333%}.col-xl-8{-ms-flex:0 0 66.666667%;flex:0 0 66.666667%;max-width:66.666667%}.col-xl-9{-ms-flex:0 0 75%;flex:0 0 75%;max-width:75%}.col-xl-10{-ms-flex:0 0 83.333333%;flex:0 0 83.333333%;max-width:83.333333%}.col-xl-11{-ms-flex:0 0 91.666667%;flex:0 0 91.666667%;max-width:91.666667%}.col-xl-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}.order-xl-first{-ms-flex-order:-1;order:-1}.order-xl-last{-ms-flex-order:13;order:13}.order-xl-0{-ms-flex-order:0;order:0}.order-xl-1{-ms-flex-order:1;order:1}.order-xl-2{-ms-flex-order:2;order:2}.order-xl-3{-ms-flex-order:3;order:3}.order-xl-4{-ms-flex-order:4;order:4}.order-xl-5{-ms-flex-order:5;order:5}.order-xl-6{-ms-flex-order:6;order:6}.order-xl-7{-ms-flex-order:7;order:7}.order-xl-8{-ms-flex-order:8;order:8}.order-xl-9{-ms-flex-order:9;order:9}.order-xl-10{-ms-flex-order:10;order:10}.order-xl-11{-ms-flex-order:11;order:11}.order-xl-12{-ms-flex-order:12;order:12}.offset-xl-0{margin-left:0}.offset-xl-1{margin-left:8.333333%}.offset-xl-2{margin-left:16.666667%}.offset-xl-3{margin-left:25%}.offset-xl-4{margin-left:33.333333%}.offset-xl-5{margin-left:41.666667%}.offset-xl-6{margin-left:50%}.offset-xl-7{margin-left:58.333333%}.offset-xl-8{margin-left:66.666667%}.offset-xl-9{margin-left:75%}.offset-xl-10{margin-left:83.333333%}.offset-xl-11{margin-left:91.666667%}}
+  
   body {
     font-family: 'Quicksand', sans-serif;
     background-color: lightgoldenrodyellow;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Vollkorn', serif;
-    color: salmon;
-  }
-  p {
-    margin: 10px;
+     background-color: #fff4dc;
   }
   a {
     text-decoration: none;
-    color: darkorange;
+    color: #FF6632;
   }
-  a:visited {
-    color: darkcyan;
-  }
-  a:hover {
-      color: darkcyan;
+  a:hover,
+  amp-selector a:hover {
+      color: #017B8C;
   }
   ul {
     list-style-type: none;
   }
-  
-  section {
-    padding: 10px;
-    max-width: 500px;
-    background-color: white;
-    margin: 0 auto;
+  textarea, input[type=email] {
+    padding:10px;
   }
-  section:after {
-    content:"";
-    display: block;
-    vertical-align: bottom;
-    width: 50%;
-    margin: 40px auto 0px;
-    border-top: 1px solid #eee;
-  }
-  header {
+  header, footer {
     width: 100%;
     position: relative;
     display: block;
     min-height: 100px;
-  }
-  .header-stage {
-    display: block;
-    padding-top: 50px;
     margin: 0;
-    padding: 50px 10px 0;
-    position: relative;
-    background-color: cadetblue;
-    min-height: 100px;
+    padding: 40px 10px 0;
+    background-color: #015F6C;
     border-bottom: 7px white double;
+    border-top: 7px white double;
+    color: white;
+    text-align: center;
+    font-size: 1.4rem;
   }
   .header-icons {
     margin: 0 auto;
-    display: block;
-    position: relative;
-    top: 20px;
-    width: 207px;
+    padding: 0;
+    
   }
   .header-icon {
-    display: inline;
+    display: inline-block;
     position: relative;
-    
-    width:100%;
-    margin-right: -40px;
     z-index: 1;
   }
-  amp-selector [selected] {
-    z-index: 2;
+  .header-icon:not(:last-child):after {
+    content: "-";
+    margin: 0 6px 0 10px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+  }
+  .header-icon a {
+    color: white;
   }
   amp-selector [option][selected] {
-      outline: none;
+    outline: none;
+  }
+  amp-selector [option][selected] a {
+    color: #019DB3;
   }
   .header-icon .icon {
     border: 3px cadetblue solid;
@@ -108,175 +125,318 @@
       margin: 0px auto;
       border-radius: 50%;
   }
-  h1.section-title {
-    text-align: center;
+  .section-container .row {
+    clear: both;
+    margin: 0 auto;
+  }
+  .section-container img {
+    height: 100%;
+  }
+  section {
+    background-color: white;
+    margin: 0 auto;
     
+    padding: 20px;
   }
-  .email-button {
-      max-width:max-content;
-      margin: 10px auto;
+  section h1,
+  section h2,
+  section h3 {
+    color: salmon;
+    text-align: center;
   }
-  .email-button a {
-      text-transform: uppercase;
-      padding: 10px;
-      border: 3px solid darkorange;
-      border-radius: 10px;
-      color: darkorange;
+  .section-tile {
+    padding: 50px;
+    background-color: #015F6C;
+    min-height: 150px;
+    color: white;
+    text-align: center;
   }
-  .email-button a:hover {
+  .tile {
+    padding: 120px 50px 0px;
+    background-color: #ffa884;
+    min-height: 300px;
+    color: white;
+  }
+  .tile h2, .tile h1 {
+    color: white;
+    text-align: center;
+  }
+  .button {
+      max-width: max-content;
+      margin: 0px auto;
+  }
+  .button a,
+  .contact-form input[type=submit] {
+    text-transform: uppercase;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    background-color: transparent;
+    display: inline-block;
+    text-align: center;
+  }
+  .button a:hover {
       border: 3px solid darkcyan;
       color: darkcyan;
   }
-  #RoseGold {
-    
+  .tile-website {
+    padding: 0px 50px;
   }
-  .RoseGold {
-    background-color: #fff4dc; 
+  .tile-website h3 {
+    font-size: 1rem;
   }
-  .RoseGold h1.section-title, 
-  .RoseGold h2 {
-    color: #ef7651;
+  .tile-website a:hover {
+    background-color: white;
+    color: #ffa884;
+    border: 3px solid #ffa884;
   }
-  .GoldieYoung{ 
-    background-color: lightgoldenrodyellow; 
+  .tile-website.trek-relief {
+    padding-top: 100px;
   }
-  .GoldieYoung h1,
-  .GoldieYoung h2,
-  .GoldieYoung h3,
-  .GoldieYoung h4,
-  .GoldieYoung h5,
-  .GoldieYoung h6 {
-    color: salmon;
+  .tile-website.trek-relief .button {
+    margin: 10px auto;
   }
-  #gallery-headericon img {
-    background-color: aliceblue;
+  .tile-website.hour-marriage {
+    padding-top: 40px;
   }
-  footer {
-    
-
-    font-size: 0.9em;
-    text-align: center;
-
+  .tile-website.hour-marriage amp-img {
+    max-width: 150px;
+    max-height: 162px;
+    margin: 0 auto;
   }
-  footer section {
-    padding-bottom: 30px;
+  .tile-website.newegg-tile {
+    padding-top: 50px;
   }
-  footer strong {
-    font-size: 2em;
+  /*.RoseGold {
+    background-color: #FFE2D7;
+  }*/
+  .Projects{
+    background-color: lightgoldenrodyellow;
   }
-  footer ul {
-      padding-inline-start: 0px;
+  ul.list-contributions {
+    list-style-type: circle;
   }
+  .newegg-tile {
+    padding: 75px 20px;
+    /*background-color: #fff4dc;*/
+    /*background-color: #589aa9;*/
+  }
+  .contact-form {
+    padding: 20px;
+    color: white;
+    font-size: 1.2em;
+  }
+  .contact-form label:last-child {
+    margin-bottom: 0px;
+  }
+  .contact-form input[type=submit] {
+    margin: 5px 0px;
+  }
+  /*div[submit-success],
+  div[submit-error] {
+    max-width: 230px;
+    float: right;
+  }*/
+  
   </style>
+
   </head>
-  <body class="RoseGold" [class]="selectedMenu" id="body">
-      
-    <header>
+  <body>
         
+    <amp-state id="mainState">
+      <script type="application/json">
+        {
+          "selectedMenu" : "RoseGold"
+        }
+      </script>
+    </amp-state>
+    
+       <div hidden>Selected menu: <code [text]="selectedMenu"></code></div>
+    <header>
+      <h1>Goldie Young</h1>
       <amp-selector class="header-stage" keyboard-select-mode="select" on="select:AMP.setState({ selectedMenu: event.targetOption})" [selected]="selectedMenu">
         <ul class="header-icons">
-          <li class="header-icon" id="RoseGold-headericon" option="RoseGold" selected><amp-img class="icon" src="rose-gold-final2a-sm.jpg" alt="rose-gold" height="100" width="100" ></amp-img></li>
-          <li class="header-icon" id="GoldieYoung-headericon" option="GoldieYoung"><amp-img class="icon" src="square-icon-sm.png" alt="square-icon" height="100" width="100" ></amp-img></li>
+          <li class="header-icon" option="RoseGold" selected><a href="#RoseGold">Home</a></li>
+          <li class="header-icon" option="Projects"><a href="#Projects">Projects</a></li>
+          <li class="header-icon" option="Contact"><a href="#Contact">Contact</a></li>
         </ul>
       </amp-selector>
       
+      
     </header>
-      <div>Selected menu: <code [text]="selectedMenu">RoseGold</code></div>
-        <div class="section-container" id="RoseGold" width="500" height="500" [hidden]="selectedMenu!='RoseGold'">
-          <h1 class="section-title">Rose Gold</h1>
-          <section class="summary"> 
-            <h3>Goldie Young</h3>
-              <amp-img class="icon" src="profile-sm.jpg" alt="Cheese." title="Cheese." height="100" width="100"></amp-img>
-            <p>I am a marketing web developer with experience optimizing websites for a better user experience. Whether its speeding up your website's page load speed or fixing sign-up forms or acquiring new customers, I can help increase your website's online presence.</p>
-              <div class="email-button"><a href="#" on="tap:AMP.setState({ selectedMenu: 'GoldieYoung'})">Email me</a></div>
-              
+    <div [class]="selectedMenu" id="mainContent">
+      <!-- Goldie Young Intro -->
+      <div class="section-container" id="RoseGold" [hidden]="selectedMenu!='RoseGold'">
+        <div class="row">
+        <amp-img src="rose-gold-fin-300.jpg" class="col-sm-12 col-md-6 col-lg-4" width="400" height="400" layout="responsive" alt="An orange-pink rose." title="An orange-pink rose."></amp-img>
+        <section class="summary col-sm-12 col-md-6 col-lg-4">
+          <h3>Web Developer</h3>
+          <p>Hello! I am a marketing web developer with experience optimizing websites for a better user experience. Whether its speeding up your website's page load speed or fixing sign-up forms or acquiring new customers, I can help increase your website's online presence.</p>
+        </section>
+        <div class="tile col-md-6 hide-sm show-md hide-lg hide-xl" style="">
+          <h2>Mobile Savvy</h2>
+        </div>
+        <amp-img src="miners-lettuce-300.jpg" class="col-sm-12 col-md-6 col-lg-4 offset" width="400" height="400" layout="responsive" alt="Miner's lettuce (Claytonia perfoliata), also known as Indian lettuce, spring beauty, or winter purslane. California gold rush miners ate this to prevent scurvy." title="Miner's lettuce (Claytonia perfoliata), also known as Indian lettuce, spring beauty, or winter purslane. California gold rush miners ate this to prevent scurvy."></amp-img>
+        <section class="projects col-sm-12 col-md-6 col-lg-4">
+          <h3>Stats</h3>
+          <p>On fast 3G networks, this site should load in around 3.5 seconds, with 459 KB transferred total.</p>
+          <p>Every image is optimized with a mobile-first mentality, loading smaller images ahead of larger images to improve a mobile user's experience.</p>
+        </section>
+        <div class="tile col-md-6 hide-sm show-md hide-lg hide-xl">
+          <h2>User Friendly</h2>
+        </div>
+        <amp-img src="white-rose-300.jpg" class="col-sm-12 col-md-6 col-lg-4" width="400" height="400" layout="responsive" alt="Bush of white roses." title="Bush of white roses."></amp-img>
+        <section class="mobile-savvy col-sm-12 col-md-6 col-lg-4">
+          <p>This page was created using <a href="https://www.ampproject.org/" target="_blank">AMP</a>, Google's Accelerated Mobile Pages library. It ensures the page can load quickly on mobile by streamlining all basic JS functionality on the page: text, pictures, sidebar menus, carousel slides, ads, analytics etc., to load within 3-4 seconds, which is <a href="https://neilpatel.com/blog/speed-is-a-killer/" target="_blank">the threshold for most webpage abandonments</a>.</p>
+        </section>
+        <div class="tile col-md-6 hide-sm show-md hide-lg hide-xl">
+          <h2>Show Off Your Brand</h2>
+        </div>
+        
+        <amp-img src="kalanchoe-laxiflora-300.jpg" media="(max-width: 900px)" class="col-sm-12 col-md-6 show-sm hide-lg" width="400" height="400" layout="responsive" alt="Kalanchoe laxiflora, or Milky Widow's Thrill, is a succulent subshrub up to 20 inches tall with orange, bell-shaped flowers. Native to Madagascar." title="Kalanchoe laxiflora, or Milky Widow's Thrill, is a succulent subshrub up to 20 inches tall with orange, bell-shaped flowers. Native to Madagascar."></amp-img>
+        <section class="col-sm-12 col-md-6 col-lg-4">
+          <!--<p>AMP is cool because even though it boils down a webpage to its barest bones, it still maintains state with <a href="https://www.ampproject.org/docs/reference/components/amp-bind" target="_blank">amp-bind</a>, so you can dynamically store the site's state and build on top of the standard AMP frameworks. They should rewrite the tutorial for AMP to mention this near the beginning, it took me a long time to find it.</p>-->
+          <h2>Skills</h2>
+          <ul class="list-contributions">
+            <li>JS, HTML, CSS</li>
+            <li>Angular, Node, SQL</li>
+            <li>Experience with Wordpress, Linux OS, Tealium, Google Analytics, Adobe Analytics</li>
+            <li>Marketing, tag management, and analytics experience</li>
+          </ul>
           </section>
-          <section class="mobile-savvy">
-            <h3>Mobile Savvy</h3>
-            <p>This page was created using AMP, Google's Accelerated Mobile Pages library. It ensures the page can load quickly on mobile by blocking most JS and only allowing basic functionality on the page: text, pictures, slides, menus, ads, etc. Implementing Google's AMP ensures your website doesn't turn away mobile users on a slow network who can't load the page within 3 seconds, which is <a href="https://neilpatel.com/blog/speed-is-a-killer/" target"_blank">the threshold for most webpage abandonments</a>.</p>
-              <p>The coolest thing about AMP is even though it's a boiled down webpage at its barest bones, it still keeps state binding with <a href="https://www.ampproject.org/docs/reference/components/amp-bind">amp-bind</a>, so you can still dynamically hide and show content not provided by the standard AMP frameworks. They should rewrite the tutorial for AMP to mention this, it took me a long time to find it.</p>
+        <div class="tile hide-sm show-md col-md-6 col-lg-4">
+          <h2 class="button"><a href="#" on="tap:AMP.setState({ selectedMenu: 'Projects'})">Contact</a></h2>
+        </div>
+        <amp-img src="kalanchoe-laxiflora-300.jpg" media="(min-width: 600px)" class="hide-sm show-lg col-lg-4" width="400" height="400" layout="responsive" alt="Kalanchoe laxiflora, or Milky Widow's Thrill, is a succulent subshrub up to 20 inches tall with orange, bell-shaped flowers. Native to Madagascar." title="Kalanchoe laxiflora, or Milky Widow's Thrill, is a succulent subshrub up to 20 inches tall with orange, bell-shaped flowers. Native to Madagascar."></amp-img>
+        </div>
+      </div> <!-- END of Goldie Young Intro -->
+      
+      <!-- START of Projects -->
+      <div class="section-container" id="Projects" [hidden]="selectedMenu!='Projects'">
+        <div class="row">
+          <div class="section-tile col-sm-12 col-md-12 hide-lg">
+            <h2>Projects</h2>
+          </div>
+          <amp-img src="hourmarriage-300.jpg" media="(max-width: 600px)" class="col-sm-12 hide-md show-lg col-lg-4" width="400" height="400" layout="responsive" alt="1 Hour Marriage - Get married under 1 hour in LA." title="1 Hour Marriage - Get married under 1 hour in LA."></amp-img>
+          <amp-img src="hourmarriage-md.jpg" media="(min-width: 600px)" class="col-md-12 hide-sm show-md hide-lg" width="600" height="300" layout="responsive" alt="1 Hour Marriage - Get married under 1 hour in LA." title="1 Hour Marriage - Get married under 1 hour in LA."></amp-img>
+          <section class="summary col-sm-12 col-md-6 col-lg-4">
+            <h3>1 Hour Marriage</h3>
+            <p>A small-business marriage venue that provides civil ceremony for the LA county.</p>
+            <ul class="list-contributions">
+              <li>Moved from Wordpress to Squarespace</li>
+              <li>Mobile-friendly template</li>
+              <li>Content organization, announcements, updates</li>
+            </ul>
           </section>
-          <section class="todo">
+          <div class="tile tile-website hour-marriage col-sm-12 col-md-6 col-lg-4">
+            <amp-img src="hourmarriage-logo-150.png" width="150" height="162" layout="responsive" alt="1 Hour Marriage - Get married under 1 hour in LA." title="1 Hour Marriage - Get married under 1 hour in LA."></amp-img>
+            <h3 class="button"><a href="https://www.1hourmarriage.com" target="_blank">Visit 1hourmarriage.com</a></h3>
+          </div>
+          <div class="tile col-lg-4 hide-sm show-lg">
+            <h2>Marketing</h2>
+          </div>
+          <amp-img src="trekrelief-300.jpg" media="(max-width: 600px)" class="col-sm-12 hide-md show-lg col-lg-4 hour-marriage" width="400" height="400" layout="responsive" alt="Trek Relief, a non-profit organization that partners travelers with global communities to collaborate on mutually beneficial and meaningful service projects." title="Trek Relief, a non-profit organization that partners travelers with global communities to collaborate on mutually beneficial and meaningful service projects."></amp-img>
+          <amp-img src="trekrelief-md.jpg" media="(min-width: 600px)" class="hide-sm show-md hide-lg col-md-12 hour-marriage" width="600" height="300" layout="responsive" alt="Trek Relief, a non-profit organization that partners travelers with global communities to collaborate on mutually beneficial and meaningful service projects." title="Trek Relief, a non-profit organization that partners travelers with global communities to collaborate on mutually beneficial and meaningful service projects."></amp-img>
+          <section class="projects col-sm-12 col-md-6 col-lg-4">
+            <h3>Trek Relief</h3>
+            <p>A non-profit organization that provides relief to remote areas by organizing trek tours and fundraisers.</p>
+            <ul class="list-contributions">
+              <li>Adwords tracking</li>
+              <li>Site content organization</li>
+              <li>Email sign-up</li>
+            </ul>
+          </section>
+          <div class="tile tile-website trek-relief col-sm-12 col-md-6 col-lg-4">
+            <amp-img src="trekrelief-logo-300.png" width="300" height="60" layout="responsive" alt="TrekRelief - A non-profit organization" title="TrekRelief - A non-profit organization"></amp-img>
+            <h3 class="button"><a href="https://www.trekrelief.com" target="_blank">Visit trekrelief.com</a></h3>
+          </div>
+       
+          <amp-img src="mktform-300.png" media="(max-width: 600px)" class="col-sm-12 hide-md show-lg col-lg-4" width="400" height="400" layout="responsive" alt="Dynamic Marketing Webform, for dynamically generating HTML banners." title="Dynamic Marketing Webform, for dynamically generating HTML banners."></amp-img>
+          <amp-img src="mktform-md.png" media="(min-width: 600px)" class="hide-sm show-md hide-lg col-md-12" width="600" height="302" layout="responsive" alt="Dynamic Marketing Webform, for dynamically generating HTML banners." title="Dynamic Marketing Webform, for dynamically generating HTML banners."></amp-img>
+        
+          <section class="mobile-savvy col-sm-12 col-md-6 col-lg-4">
+            <h3>MKT Webform</h3>
+            <p>A webform that helps Newegg's Dynamic Marketing team generate HTML for dynamic banners.</p>
+            <ul class="list-contributions">
+              <li>Dynamically change HTML content using Angular.JS</li>
+              <li>Download banners OR copy to clipboard features</li>
+            </ul>
+          </section>
+          <div class="tile tile-website newegg-tile col-sm-12 col-md-6 col-lg-4">
+            <amp-img src="newegg-logo-200.png" width="200" height="100" layout="responsive" alt="Newegg.com - Electronics, Computers, PCs, Gaming, and More" title="Newegg.com - Electronics, Computers, PCs, Gaming, and More"></amp-img>
+            <h3 class="button"><a href="https://www.newegg.com" target="_blank">Visit newegg.com</a></h3>
+          </div>
+          <!--<div class="tile col-sm-12 col-lg-4">
+            <h2 class="button"><a href="#" on="tap:AMP.setState({ selectedMenu: 'Projects'})">Contact</a></h2>
+          </div>-->
+          <section class="mobile-savvy col-sm-12 col-md-12 col-lg-12">
             <h3>To Do</h3>
-            <ol>
-              <li>Fix links</li>
-              <li>Use <a href="https://www.ampproject.org/docs/reference/components/amp-sidebar">amp-selector</a> to fix header-icon navigation.</li>
-              <li>Learn Node.js and set up a basic server that reads and writes data, like visitor analytics or an art site with users and galleries.</li>
-              <li>Look into the webcomic libraries available for free, see if it can be improved upon.</li>
-              <li>Create my dream farming adventure game (ala Rune Factory, Stardew Valley, Harvest Moon).</li>
-            </ol>
-          </section>
-          <section class="github" hidden>
-            <h3>How to merge on Github</h3>
-            <ol>
-              <li>Turn on Github CMD from Start menu</li>
-              <li>Go to folder Fishy/Webdev/amp</li>
-              <li>Check git status to see what's up</li>
-              <li>Type "git add *" to add all modified files to the commit</li>
-              <li>Type "git commit -m '[notes]" to commit these stages with notes (the notes are mandatory)</li>
-              <li>Type "git push" to push, password is s******6</li>         
-            </ol>
-          </section>
-          <section class="lorem" hidden> 
-            <h3>Diary</h3>
-            <p>9/8/2018 8:58pm: 今天我喝柴拿铁也读手册的 Node.js</p>
-            <p>10/21/2018 11:25am: Estoy estudiando r/dataisbeautiful con Bootstrap y D3.js hoy.</p>
-            <p>11/03/2018 6:33pm: Today I washed all my clothes. Unfortunately, I did not use enough soap, and my pants still slightly stink. Next time I do laundry I'll wash them again with more soap.</p>
-            <p>11/12/2018 1:02pm: At Las Vegas Art District drinking tea in a fancy coffee shop. I ran my 4th and last marathon last night, very cold and feeling nauseous the first half from 2 cups of coffee. I did not prepare for a full marathon, I should've done the half. My legs started hurting at mile 15 instead of mile 20 or 25 like in previous races. I had to walk the last 2, they hurt so much I thought I might die alone, collapsed on the Las Vegas strip in a crowd of uncaring tourists. I'm glad I finished it, that's all that matters.</p>
-            <p>11/24/2018 6:42pm: Building a webform using Django (in Python) for a work side-project. Hoping it can create campaigns, campaign HTML, and store campaign data in an excel file (.xlsx). Maybe I can add automatic reporting as well.</p>
-          </section>
-        </div> <!-- End of RoseGold -->
-        <div class="section-container" id="GoldieYoung" width="500" height="500" hidden [hidden]="selectedMenu!='GoldieYoung'">
-          <h1 class="section-title">Goldie Young</h1>
-          <section class="contact">
-            <h3>Contact</h3>
             <ul>
-              <li><label>Email: </label><a href="mailto:goldie.young456@gmail.com">goldie.young456@gmail.com</a></li>
-              <!-- <li>Phone: (###) ###-####</li> -->
+              <li>Test out navigation ideas. Maybe simplify to a scroll-down one-page setup.</li>
+              <li>Replace card suits with social icons</li>
+              <li>Get email icon</li>
+              <li>Get logos for each project in their image, bottom-right.</li>
+              <li>Look into AMP analytics options, see if Github has one suited for git pages</li>
+              <li>Clean up CSS</li>
+              <li>Add title to images?</li>
+              <li>Compliance with AMP rules</li>
+              <li>Add little Heart buttons for people to like things? Mobile looks a lot like Instagram lmao.</li>
             </ul>
           </section>
-          <section class="menu" hidden>
-            <h3>Menu</h3>
-            <ul>
-              <!-- <li><a href="//localhost/webdev/1houramp/index.html">1HourAmp</a></li> -->
-              <!-- <li><a href="https://fishysticks456.github.io/">fishysticks456.github.io</a></li> -->
-              <!-- <li><a href="http://localhost/webdev/dataisbeautiful/charts.html">localhost: dataisbeautiful travel survey</a></li> -->
-              <li><a href="webform/index.html">webform for MKT</a></li>
-
-            </ul>
+        </div>
+      </div> <!-- END of Projects -->
+      
+      <!-- START of Contact -->
+      <div class="section-container" id="Projects" [hidden]="selectedMenu!='Contact'">
+        <div class="row">
+          <div class="section-tile col-sm-12 col-md-12 hide-lg">
+            <h2>Contact</h2>
+          </div>
+          <section class="summary col-sm-12 col-md-6 col-lg-4">
+            <!--<h3>Contact</h3>-->
+            <p>I do pro-bono work and consultation for non-profits. Feel free to ask question or inquire for availability.</p>
           </section>
-          <section class="bio">
-            <h3>Bio</h3>
-            <ul>
-              <li>Works in Newegg (4+ years) in City of Industry.</li>
-              <li>Filthy casual web developer.</li>
-              <li>Enjoys video games and financial stability.</li>
-              <li>Likes cats, flowers, biking</li>
-            </ul>
-          </section>
-          <section class="preference" hidden>
-            <h3>Likes</h3>
-            <ul>
-              <li></li>
-              <li>Washing dishes and running in the morning</li>
-            </ul>
-            <h3>Disikes</h3>
-            <ul>
-              <li>Cat fur everywhere, dead plants, nausea from too much coffee</li>
-              <li>Old dirty dishes, running in the evening</li>
-            </ul>
-          </section>
+          <amp-img src="white-rose-fin-300.jpg" media="(min-width: 600px)" class="col-md-6 hide-sm show-md hide-lg" width="400" height="400" layout="responsive" alt="Bush of white roses."></amp-img>
+          <div class="tile col-sm-12 col-md-12 col-lg-8 contact-form">
+            <!--<h2>Contact</h2>-->
+            <form class="row" method="post" action-xhr="https://example.com" target="_top">
+              <fieldset class="col-sm-12 col-md-8">
+                <label><div>Email:</div> <input type="email" name="email" placeholder="email@address.com" required></label>
+                <br>
+                <label><div>Text:</div> <textarea name="text" rows="4" placeholder="Hello!"></textarea></label>
+              </fieldset>
+              <div class="col-sm-12 col-md-4">
+                <div submit-success>
+                  <template type="amp-mustache">Thank you for your email! I'll get back to you as soon as possible.</template>
+                </div>
+                <div submit-error>
+                  <template type="amp-mustache">Sorry, something must be wrong. Please try again later.</template>
+                </div>
+                <input type="submit" value="Submit">
+              </div>
+            </form>
+          </div>
+          <div class="tile col-lg-4 hide-sm show-lg">
+            <h1>&hearts;</h1>
+          </div>
+          <amp-img src="white-rose-fin-300.jpg" media="(max-width: 600px)" class="col-sm-12 hide-md" width="400" height="400" layout="responsive" alt="Bush of white roses."></amp-img>
+          <amp-img src="white-rose-600.jpg" media="(min-width: 900px)" class="hide-sm show-lg col-lg-8" width="600" height="300" layout="responsive" alt="Bush of white roses."></amp-img>
           
         </div>
-     
+      </div> <!-- END of Contact -->
+    </div>
     <footer>
-        <section>
-            <amp-selector on="select:AMP.setState({ selectedMenu: event.targetOption}),body.scrollTo" [selected]="selectedMenu">
-        <ul>
-          <li option="RoseGold" selected><a href="#RoseGold">Home</a></li>
-          <li option="GoldieYoung"><a href="#GoldieYoung">About</a></li>
+      <amp-selector class="header-stage" keyboard-select-mode="select" on="select:AMP.setState({ selectedMenu: event.targetOption})" [selected]="selectedMenu">
+        <ul class="header-icons">
+          <li class="header-icon" option="RoseGold" selected><a href="#RoseGold">Home</a></li>
+          <li class="header-icon" option="Projects"><a href="#Projects">Projects</a></li>
+          <li class="header-icon" option="Contact"><a href="#Contact">Contact</a></li>
         </ul>
-            </amp-selector><h1>&clubs;&spades;&hearts;&diamondsuit;</h1></section>
+      </amp-selector>
+      <h1>&clubs;&spades;&hearts;&diamondsuit;</h1>
     </footer>
+
+  
   </body>
 </html>

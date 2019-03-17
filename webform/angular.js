@@ -81,7 +81,7 @@ angular.module('dymApp', [])
 
   dym.email = {
     campaignID : "DYMX-ABT-17011",
-    date : now.getDate() + (now.getMonth() < 9 ? "0" + (now.getMonth()+1) : now.getMonth()+1) + now.getFullYear(),
+    date : (now.getDate() < 10 ? "0" + (now.getDate()) : now.getDate()) + (now.getMonth() < 9 ? "0" + (now.getMonth()+1) : now.getMonth()+1) + now.getFullYear(),
     sku : "20-147-674",
     producttitle : "SAMSUNG 860 EVO Series 2.5\" 500GB SATA III V-NAND 3-Bit MLC Internal SSD",
     productimg : "https://c1.neweggimages.com/NeweggImage/ProductImageCompressAll300/20-147-674-V01.jpg",
@@ -115,9 +115,13 @@ angular.module('dymApp', [])
     alertUser("Saved dym session data to local storage");
   };
   dym.load = function() {
+    var now = new Date();
+    
     dym.copy = JSON.parse(localStorage.getItem("dym"));
     for( var m in dym.banner ) {dym.banner[m] = dym.copy.banner[m];}
     for( m in dym.email ) {dym.email[m] = dym.copy.email[m];}
+    // Refresh date, no need to make it get yesterday's date.
+    dym.email.date = (now.getDate() < 10 ? "0" + (now.getDate()) : now.getDate()) + (now.getMonth() < 9 ? "0" + (now.getMonth()+1) : now.getMonth()+1) + now.getFullYear();
     console.log("Loaded old session data from local storage");
   };
   

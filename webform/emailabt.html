@@ -275,9 +275,7 @@ ol, ul {
   <div class="swiper-box-top">
       <h2 class="swiper-box-top-title">Latest Email Deals</h2>
   </div>
-  <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets" style="display:none"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span></div>
-  <span class="swiper-box-arrow-prev swiper-button-disabled" style="display:none"><i class="fa fa-angle-left"></i></span>
-  <span class="swiper-box-arrow-next swiper-button-disabled" style="display:none"><i class="fa fa-angle-right"></i></span>
+  <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets" style="display:none">&nbsp;</div>
   <div class="swiper-container swiper-container-horizontal">
       <div class="swiper-wrapper">
 
@@ -368,9 +366,7 @@ ol, ul {
     <pre class="text-area" id="{{$ctrl.email.campaignID | lowercase}}_{{$ctrl.email.sku | uppercase}}_{{$ctrl.email.date}}" style="height: 400px;">&lt;div class="swiper-box-top"&gt;
       &lt;h2 class="swiper-box-top-title"&gt;Latest Email Deals&lt;/h2&gt;
   &lt;/div&gt;
-  &lt;div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets" style="display:none"&gt;&lt;span class="swiper-pagination-bullet swiper-pagination-bullet-active"&gt;&lt;/span&gt;&lt;/div&gt;
-  &lt;span class="swiper-box-arrow-prev swiper-button-disabled" style="display:none"&gt;&lt;i class="fa fa-angle-left"&gt;&lt;/i&gt;&lt;/span&gt;
-  &lt;span class="swiper-box-arrow-next swiper-button-disabled" style="display:none"&gt;&lt;i class="fa fa-angle-right"&gt;&lt;/i&gt;&lt;/span&gt;
+  &#x3C;div class=&#x22;swiper-pagination swiper-pagination-clickable swiper-pagination-bullets&#x22; style=&#x22;display:none&#x22;&#x3E;&#x26;nbsp;&#x3C;/div&#x3E;
   &lt;div class="swiper-container swiper-container-horizontal"&gt;
       &lt;div class="swiper-wrapper"&gt;
 
@@ -406,27 +402,27 @@ ol, ul {
                       <span ng-switch="$ctrl.email.isCategory">
                         <span ng-switch-when="true">&lt;strong style="font-size:20px;"&gt;Category Wide Coupon Sale&lt;/strong&gt;</span>
                         <span ng-switch-when="false">$&lt;strong&gt;<var>{{$ctrl.email.saleprice | dollars}}</var>&lt;/strong&gt;&lt;sup&gt;.<var>{{$ctrl.email.saleprice | cents}}</var>&lt;/sup&gt;</span>
-                      </span>
+                      </span>&#x3C;/span&#x3E;
                       
                       &lt;span class="price-current-range"&gt;
                           &lt;abbr title="to"&gt;–&lt;/abbr&gt;
                       &lt;/span&gt;
               &lt;/li&gt;
               &lt;li class="price-save"&gt;
-<span ng-show="$ctrl.email.isCategory || !$ctrl.email.showDiscount">
+<span ng-show="$ctrl.email.isCategory || !$ctrl.email.showDiscount">&#x3C;!--</span>
   &lt;style&gt;
     #MoreDeals span.price-save-percent,
     #MoreDeals span.price-save-label,
     #MoreDeals span.price-save-dollar
     { display: none; }
-  &lt;/style&gt;</span>
+  &lt;/style&gt; <span ng-show="$ctrl.email.isCategory || !$ctrl.email.showDiscount">--&#x3E;</span>
                       &lt;span class="price-save-endtime price-save-endtime-current"&gt;&lt;/span&gt;
                       &lt;span class="price-save-endtime price-save-endtime-another"&gt;&lt;/span&gt;
 
 
-                          &lt;span class="price-save-label"&gt;&lt;/span&gt;
+                          &lt;span class="price-save-label"&gt;<span ng-hide="$ctrl.email.isCategory">Save: </span>&lt;/span&gt;
                           &lt;span class="price-save-dollar"&gt;&lt;/span&gt;
-                          &lt;span class="price-save-percent"&gt;<span ng-hide="$ctrl.email.isCategory">Save: <var>{{($ctrl.email.fullprice - $ctrl.email.saleprice)*100 / $ctrl.email.fullprice | rounded}}%</var></span>&lt;/span&gt;
+                          &lt;span class="price-save-percent"&gt;<span ng-hide="$ctrl.email.isCategory"><var>{{($ctrl.email.fullprice - $ctrl.email.saleprice)*100 / $ctrl.email.fullprice | rounded}}%</var></span>&lt;/span&gt;
               &lt;/li&gt;
               &lt;li class="price-note"&gt;
 

@@ -26,7 +26,7 @@
 var dom = jQuery(&#x22;.main-nav-item&#x22;)[<var>{{$ctrl.type | index}}</var>];
 
 NEG(dom).on(&#x22;Switch_Activate&#x22;,function(){
-  if(typeof s != &#x27;undefined&#x27;) {
+  if(typeof s != &#x27;undefined&#x27; &#x26;&#x26; jQuery(&#x22;center&#x22;, dom).css(&#x27;display&#x27;) == &#x27;block&#x27;) {
     s.linkTrackEvents=&#x27;&#x27;;
     s.linkTrackVars=&#x27;prop26,eVar50&#x27;;
     s.prop26=&#x27;-_--_--_--_--_-<var>{{$ctrl.dym.campaignID | uppercase}}</var>_<var>{{$ctrl.type}}</var>_<var>{{$ctrl.dym.customerSeg}}</var>-_-Pers_MNT_Imp-_--_-&#x27;+new Date().toISOString()+&#x27;-_-&#x27;;

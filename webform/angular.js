@@ -36,6 +36,11 @@ angular.module('dymApp', [])
       return Math.round(price);
     };
   })
+.filter('firstChop', function() {
+    return function(segs) {
+      return segs.split(',')[0];
+    };
+  })
 .filter('scrubbed', function() {
     return function(title) {
       return title.replace(/"/,"&#x22;");

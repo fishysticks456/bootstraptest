@@ -5,7 +5,7 @@
     var ctrl = this;
 
     ctrl.$onInit = function() {
-      console.log("We're seriously starting this shiw");
+      //console.log("We're seriously starting this shiw");
       ctrl.type = ctrl.type || "normal";
       
     }

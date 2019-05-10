@@ -36,6 +36,11 @@ angular.module('dymApp', [])
       return Math.round(price);
     };
   })
+.filter('firstChop', function() {
+    return function(segs) {
+      return segs.split(',')[0];
+    };
+  })
 .filter('scrubbed', function() {
     return function(title) {
       return title.replace(/"/,"&#x22;");
@@ -99,9 +104,63 @@ angular.module('dymApp', [])
     nav : "NV1"
   };*/
   
+  // Set default settings
+  dym.settings = [
+	  {
+		  "group": "Desktop",
+		  "name": "Homepage Top Banner",
+		  "id": "HT",
+		  "size": "970x50"
+	  },
+	  {
+		  "group": "Desktop",
+		  "name": "Universal Top Banner",
+		  "id": "UT",
+		  "size": "970x90"
+	  },
+	  {
+		  "group": "Desktop",
+		  "name": "Product Page Box Banner",
+		  "id": "PB",
+		  "size": "300_250"
+	  },
+	  {
+		  "group": "Desktop",
+		  "name": "Bullet Banner",
+		  "id": "BB",
+		  "size": "374x50"
+	  },
+	  {
+		  "group": "Mobile",
+		  "name": "Mobile Search Banner",
+		  "id": "MID5",
+		  "size": "640x100"
+	  },
+	  {
+		  "group": "Mobile",
+		  "name": "Mobile Footer Banner",
+		  "id": "FOOT",
+		  "size": "640x100"
+	  },
+	  {
+		  "group": "Mobile",
+		  "name": "Mobile Product Banner",
+		  "id": "SHARE",
+		  "size": "640x100"
+	  },
+	  {
+		  "group": "Mobile",
+		  "name": "Mobile EventStore Banner",
+		  "id": "STORE",
+		  "size": "640x100"
+	  }
+  ];
+
+  
   dym.copy = {
     banner : {},
-    email : {}
+    email : {},
+	settings : []
   };
   
   
@@ -110,6 +169,7 @@ angular.module('dymApp', [])
   dym.save = function() {
     for( var m in dym.banner ) {dym.copy.banner[m] = dym.banner[m];}
     for( m in dym.email ) {dym.copy.email[m] = dym.email[m];}
+	for( m in dym.settings ) {dym.copy.settings[m] = dym.settings[m];}
     localStorage.setItem("dym", JSON.stringify(dym.copy));
     
     alertUser("Saved dym session data to local storage");
@@ -120,10 +180,20 @@ angular.module('dymApp', [])
     dym.copy = JSON.parse(localStorage.getItem("dym"));
     for( var m in dym.banner ) {dym.banner[m] = dym.copy.banner[m];}
     for( m in dym.email ) {dym.email[m] = dym.copy.email[m];}
+	for( m in dym.settings ) {dym.settings[m] = dym.copy.settings[m];}
     // Refresh date, no need to make it get yesterday's date.
     dym.email.date = (now.getDate() < 10 ? "0" + (now.getDate()) : now.getDate()) + (now.getMonth() < 9 ? "0" + (now.getMonth()+1) : now.getMonth()+1) + now.getFullYear();
     console.log("Loaded old session data from local storage");
   };
+  dym.reset = function() {
+	 dym.copy = {
+		banner : {},
+		email : {},
+		settings : []
+	  }; 
+	localStorage.removeItem("dym");
+	alertUser("Erased dym session data from local storage.\nRefresh the page to reset settings.");
+  }
   
   dym.$onInit = function() {
     if(localStorage.hasOwnProperty("dym")) dym.load();

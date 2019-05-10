@@ -21,6 +21,10 @@
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/jquery/jquery.easing.min.js"></script>
+	<script src="vendor/jszip/jszip.min.js" async></script>
+    <script src="vendor/filesaver.min.js" async></script>
+    <script src="vendor/bootstrap.bundle.min.js" async></script>
+    
     <!-- Load Angular.JS -->
     <script src="js/angularjs.1.7.5.min.js"></script>
     <script src="angular.js"></script>
@@ -116,6 +120,10 @@
         border-top: 1px solid grey;
         margin: 20px auto;
       }
+	  a[data-toggle='tooltip'] {
+		margin: 5px;
+		padding: 0px 5px;
+	  }
       .btn-outline-secondary.save-banners {
         margin: 10px auto;
       }
@@ -166,10 +174,13 @@
         <!-- Tabs under Breadcrumbs -->
         <ul class="nav nav-tabs" role="tablist" >
           <li class="nav-item">
-            <a class="nav-link active" id="dym-tab" data-toggle="tab" href="#dym-banners" role="tab" aria-controls="dym-banners" aria-selected="true">DYM Banners</a>
+            <a class="nav-link" id="dym-tab" data-toggle="tab" href="#dym-banners" role="tab" aria-controls="dym-banners" aria-selected="true">DYM Banners</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="email-tab" data-toggle="tab" href="#email-abt" role="tab" aria-controls="email-abt" aria-selected="false">Email Homepage ABT</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link active" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
           </li>
           <!--<li class="nav-item">
             <a class="nav-link disabled" id="flyout-tab" data-toggle="tab" href="#flyouts" role="tab" aria-controls="flyout" aria-selected="false">Flyout</a>
@@ -182,7 +193,7 @@
       <div id="content-wrapper" class="tab-content" ng-controller="DYMController as dym">
         
         <!-- DYM Banners tab -->
-        <div class="container-fluid tab-pane fade show active" id="dym-banners" role="tabpanel" aria-labelledby="dym-tab" >
+        <div class="container-fluid tab-pane fade" id="dym-banners" role="tabpanel" aria-labelledby="dym-tab" >
           
           <div id="Loader">Loading...</div>
 
@@ -192,14 +203,18 @@
             
             <div id="Webform" class="form-container col-8" >
               <form name="dymForm">
-                <label>*Campaign ID :
+                <label>Folder Name :
+                  <input name="folderName" type="text"
+                         placeholder="Campaign Name" size="16" value="" >
+                </label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="Name of the folder downloaded, usually the campaign name. Defaults to 'banners'."><sup>?</sub></a><br>
+				<label>*Campaign ID :
                   <input ng-model="dym.banner.campaignID" name="campaignID" type="text"
                          placeholder="DYM-MKS-19000" size="16" class="uppercase" value="" >
                 </label><br>
                 <label>Customer Segment :
                   <input ng-model="dym.banner.customerSeg" name="seg" type="text"
                          placeholder="STATIC" size="16" value="">
-                </label><br>
+                </label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="To download multiple segments, separate the segments with a comma, no spaces. Ex: &#x22;STATIC,SEG12,DealHunter&#x22;"><sup>?</sub></a><br>
                 <label>*Banner href :
                   <input ng-model="dym.banner.href" name="href" type="text"
                          placeholder="https://www.newegg.com" size="36" value="">
@@ -387,6 +402,70 @@
           
         </div>
         <!-- END Email ABT tab -->
+		
+		<style>
+		.current-banners {
+			margin: 10px;
+		}
+
+		</style>
+		
+		<!-- Settings tab -->
+        <div class="container-fluid tab-pane active show fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+			<div class="row">
+				<div class="form-container col-8" >
+					<h4>Banner Settings</h4>
+					<div class="current-banners table-responsive">
+						<table class="table table-sm">
+							<caption>Current banner settings</caption>
+							<thead class="thead-dark"><tr>
+								<th scope="col">#</th>
+								<th scope="col">Group</th>
+								<th scope="col">Name</th>
+								<th scope="col">ID</th>
+								<th scope="col">Size</th>
+								<th scope="col">Actions</th>
+							</tr></thead>
+							<tbody>
+							<tr ng-repeat="banner in dym.settings">
+								<th scope="row">{{ $index }}</th><td>{{ banner.group}}</td><td>{{ banner.name }} </td><td> {{ banner.id}} </td><td> {{ banner.size }} </td><td>Edit Delete</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-container col-6" >
+					<h4>Add New Banner</h4>
+					<form name="newBanner">
+						<label>Banner Group :
+						  <input name="bannerGroup" type="text"
+								 size="16" value="" >
+						</label><br>
+						<label>Banner Name :
+						  <input name="bannerName" type="text"
+								 size="16" value="" >
+						</label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="Ex: &#x22;Homepage Top Banner&#x22;, &#x22;UniTop Banner&#x22;, etc."><sup>?</sub></a><br>
+						<label>Banner ID :
+						  <input name="bannerID" type="text"
+								 size="8" class="uppercase" value="" >
+						</label><br>
+						<label>Banner Size :
+						  <input name="bannerSize" type="text"
+								 placeholder="[width]x[height]" size="16" value="">
+						</label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="This form will replace &#x22;___x___&#x22; with &#x22;[width]x[height].jpg&#x22; in the banner img URL."><sup>?</sub></a><br>
+						<input type="submit" value="Add new banner"></input><br>
+						
+					</form>
+				</div>
+				<div class="form-container col-6" >
+					<h4>Reset Settings</h4>
+					<p>Resetting the settings will remove the saved fields from previous campaigns, as well as any new banner settings. Banner settings are stored in local storage, since github pages are static and don't store data in a database. This means any changes you make here will not affect another user's settings.</p>
+					<input type="button" value="Reset Settings" ng-click="dym.reset()"></input>
+				</div>
+			</div>
+		</div>
         
         <!-- Flyout tab -->
         <!--<div class="container-fluid tab-pane fade" id="flyouts" role="tabpanel" aria-labelledby="flyout-tab">
@@ -412,12 +491,7 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- Core plugin JavaScript-->
-    
-    <script src="vendor/jszip/jszip.min.js" async></script>
-    <script src="vendor/filesaver.min.js" async></script>
-    <script src="vendor/bootstrap.min.js" async></script>
-    
+
 
 <script type="text/javascript">
 
@@ -436,6 +510,8 @@ jQuery("button.clear-all", WebformSettings).click(function() {
 jQuery("button.select-all", WebformSettings).click(function() {
   jQuery(".btn-outline-primary:not(.active)", WebformSettings).click();
 });
+// Tooltip initialization
+jQuery('[data-toggle="tooltip"]').tooltip();
 
 // Hide "Loading..." text
 jQuery("#Loader").hide();
@@ -461,15 +537,25 @@ function download(data, filename, type) {
 function saveBanners() {
   
   var banners = jQuery(".form-output:visible pre.text-area");
+  var folderName = (document.forms.dymForm.folderName.value || "banners") + ".zip";
+  var segfield = document.forms.dymForm.seg;
+  var segs = segfield.value.split(',');
 
-  if( banners.length > 1 ) {
+  if( banners.length > 1 || segs.length > 1) {
     console.log("Downloading multiple html files.");
     var zip = new JSZip();
-    banners.map(function(i,n) {
-      var filename = jQuery(n).attr('id').toLowerCase() + ".html";
-      zip.folder("banners").file(filename, jQuery(n).text());
-      
-    });
+	for( var i = 0; i < segs.length; i++) {
+		segfield.value = segs[i];
+		jQuery(segfield).change() // Trigger onChange event after manually inserting value to update all the grey-box code.
+		banners.map(function(i,n) {
+		  var filename = jQuery(n).attr('id').toLowerCase() + ".html";
+		  zip.folder(folderName).file(filename, jQuery(n).text());
+		});
+	}
+	// After generating all .html files with different segs, reset Segment back to original.
+	segfield.value = segs.join(',');
+	jQuery(segfield).change()
+	
     zip.generateAsync({type:"blob"})
       .then(function (blob) {
           saveAs(blob, "banners.zip");
@@ -481,7 +567,7 @@ function saveBanners() {
     var file = new Blob([jQuery(banners).text()], {type: "html"});
     if (window.navigator.msSaveOrOpenBlob) // IE10+
         window.navigator.msSaveOrOpenBlob(file, filename);
-    else { // Others
+    else { // Not IE10+
         var a = document.createElement("a"),
                 url = URL.createObjectURL(file);
         a.href = url;

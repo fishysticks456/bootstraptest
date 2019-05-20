@@ -438,31 +438,27 @@
 			<div class="row">
 				<div class="form-container col-6" >
 					<h4>Add New Banner</h4>
-					<form name="newBanner">
+					<form name="newBanner" ng-submit="dym.addBannerSetting()">
 						<label>Banner Group :
-						  <input name="bannerGroup" type="text"
-								 size="16" value="" >
+						  <input ng-model="dym.sett.bannerGroup" name="bannerGroup" type="text" size="16" value="" >
 						</label><br>
 						<label>Banner Name :
-						  <input name="bannerName" type="text"
-								 size="16" value="" >
-						</label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="Ex: &#x22;Homepage Top Banner&#x22;, &#x22;UniTop Banner&#x22;, etc."><sup>?</sub></a><br>
+						  <input ng-model="dym.sett.bannerName" name="bannerName" type="text" size="16" value="" >
+						</label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="Ex: &#x22;Homepage Top Banner&#x22;, &#x22;UniTop Banner&#x22;, etc."><sup>?</sup></a><br>
 						<label>Banner ID :
-						  <input name="bannerID" type="text"
-								 size="8" class="uppercase" value="" >
+						  <input ng-model="dym.sett.bannerID" name="bannerID" type="text" size="8" class="uppercase" value="" >
 						</label><br>
 						<label>Banner Size :
-						  <input name="bannerSize" type="text"
-								 placeholder="[width]x[height]" size="16" value="">
-						</label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="This form will replace &#x22;___x___&#x22; with &#x22;[width]x[height].jpg&#x22; in the banner img URL."><sup>?</sub></a><br>
-						<input type="submit" value="Add new banner"></input><br>
+						  <input ng-model="dym.sett.bannerSize" name="bannerSize" type="text" placeholder="[width]x[height]" size="16" value="">
+						</label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="This form will replace &#x22;___x___&#x22; with &#x22;[width]x[height].jpg&#x22; in the banner img URL."><sup>?</sup></a><br>
+						<input type="submit" value="Add new banner"/><br>
 						
 					</form>
 				</div>
 				<div class="form-container col-6" >
 					<h4>Reset Settings</h4>
 					<p>Resetting the settings will remove the saved fields from previous campaigns, as well as any new banner settings. Banner settings are stored in local storage, since github pages are static and don't store data in a database. This means any changes you make here will not affect another user's settings.</p>
-					<input type="button" value="Reset Settings" ng-click="dym.reset()"></input>
+					<input type="button" value="Reset Settings" ng-click="dym.reset()"/>
 				</div>
 			</div>
 		</div>

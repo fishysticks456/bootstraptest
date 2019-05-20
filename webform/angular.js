@@ -155,7 +155,12 @@ angular.module('dymApp', [])
 		  "size": "640x100"
 	  }
   ];
-
+  dym.sett = {
+	  "group": "",
+	  "name": "",
+	  "id": "",
+	  "size": ""
+  };
   
   dym.copy = {
     banner : {},
@@ -190,9 +195,19 @@ angular.module('dymApp', [])
 		banner : {},
 		email : {},
 		settings : []
-	  }; 
+	  };
 	localStorage.removeItem("dym");
 	alertUser("Erased dym session data from local storage.\nRefresh the page to reset settings.");
+  }
+  dym.addBannerSetting = function() {
+    var sett = dym.sett;
+    console.log(sett);
+    if( sett && sett.group && sett.id && sett.size && sett.name ) {
+      dym.settings.push(sett);
+      alertUser("Added banner settings for " + sett.name);
+    } else {
+      alertUser("Banner is missing a field");
+    }
   }
   
   dym.$onInit = function() {

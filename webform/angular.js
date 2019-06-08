@@ -155,7 +155,7 @@ angular.module('dymApp', [])
 		  "size": "640x100"
 	  }
   ];
-  dym.sett = {
+  dym.newBanner = {
 	  "group": "",
 	  "name": "",
 	  "id": "",
@@ -174,7 +174,8 @@ angular.module('dymApp', [])
   dym.save = function() {
     for( var m in dym.banner ) {dym.copy.banner[m] = dym.banner[m];}
     for( m in dym.email ) {dym.copy.email[m] = dym.email[m];}
-	for( m in dym.settings ) {dym.copy.settings[m] = dym.settings[m];}
+	  //for( m in dym.settings ) {dym.copy.settings[m] = dym.settings[m];}
+    dym.copy.settings = dym.settings;
     localStorage.setItem("dym", JSON.stringify(dym.copy));
     
     alertUser("Saved dym session data to local storage");
@@ -183,31 +184,44 @@ angular.module('dymApp', [])
     var now = new Date();
     
     dym.copy = JSON.parse(localStorage.getItem("dym"));
-    for( var m in dym.banner ) {dym.banner[m] = dym.copy.banner[m];}
-    for( m in dym.email ) {dym.email[m] = dym.copy.email[m];}
-	for( m in dym.settings ) {dym.settings[m] = dym.copy.settings[m];}
+    for( var m in dym.copy.banner ) {dym.banner[m] = dym.copy.banner[m];}
+    for( m in dym.copy.email ) {dym.email[m] = dym.copy.email[m];}
+	  for( m in dym.copy.settings ) {dym.settings[m] = dym.copy.settings[m];}
     // Refresh date, no need to make it get yesterday's date.
     dym.email.date = (now.getDate() < 10 ? "0" + (now.getDate()) : now.getDate()) + (now.getMonth() < 9 ? "0" + (now.getMonth()+1) : now.getMonth()+1) + now.getFullYear();
     console.log("Loaded old session data from local storage");
   };
   dym.reset = function() {
 	 dym.copy = {
-		banner : {},
-		email : {},
-		settings : []
+  		banner : {},
+  		email : {},
+  		settings : []
 	  };
 	localStorage.removeItem("dym");
 	alertUser("Erased dym session data from local storage.\nRefresh the page to reset settings.");
   }
   dym.addBannerSetting = function() {
-    var sett = dym.sett;
-    console.log(sett);
-    if( sett && sett.group && sett.id && sett.size && sett.name ) {
-      dym.settings.push(sett);
-      alertUser("Added banner settings for " + sett.name);
+    var newBanner = dym.newBanner;
+    console.log(newBanner);
+    if( newBanner && newBanner.group && newBanner.id && newBanner.size && newBanner.name ) {
+      dym.settings.push(newBanner);
+      dym.save();
+      /*dym.copy = JSON.parse(localStorage.getItem("dym")) ||
+        {
+      		banner : {},
+      		email : {},
+      		settings : []
+    	  };
+      for (var m in dym.settings ) {dym.copy.settings[m] = dym.settings[m];}
+      localStorage.setItem("dym", JSON.stringify(dym.copy));*/
+      alertUser("Added banner settings for " + newBanner.name);
     } else {
       alertUser("Banner is missing a field");
     }
+  }
+  dym.editBannerSetting = function(i) {
+    console.log("editing banner ");
+    console.log(i);
   }
   
   dym.$onInit = function() {

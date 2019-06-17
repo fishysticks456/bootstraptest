@@ -69,6 +69,11 @@ angular.module('dymApp', [])
     return check ? '✓'	: "";
   };
 })
+.filter('unique', function() {
+  return function(value, index, self) {
+    return self.indexOf(value) === index;
+  };
+})
 
 .controller('DYMController', function() {
   var dym = this;
@@ -78,7 +83,7 @@ angular.module('dymApp', [])
   dym.banner = {
     campaignID : "DYM-MKS-19000",
     href : "https://www.newegg.com",
-    bannerLink : "https://dummyimage.com/970x50/f00/fff",
+    bannerLink : "https://dummyimage.com/970x50/27f/fff",
     alt : "Alt text for banners",
     customerSeg : "STATIC",
     flyoutnav : "NV1",
@@ -177,6 +182,8 @@ angular.module('dymApp', [])
   dym.deletedBanner = {};
   dym.editBanner = {};
   
+  dym.groupBanners = []
+  
   dym.copy = {
     banner : {},
     email : {},
@@ -215,8 +222,11 @@ angular.module('dymApp', [])
 	localStorage.removeItem("dym");
 	alertUser("Erased dym session data from local storage.\nRefresh the page to reset settings.");
   }
-  dym.addBannerSetting = function(optNewBanner) {
-    var newBanner = optNewBanner || dym.newBanner;
+  dym.updateBannerGroup = function() {
+    dym.groupBanners = Array.from(new Set(dym.settings.map(banner=>banner.group)));
+  }
+  dym.addBannerSetting = function() {
+    var newBanner = dym.newBanner;
     console.log(newBanner);
     if( newBanner && newBanner.group && newBanner.id && newBanner.size && newBanner.name ) {
       var hasDuplicate = dym.settings.filter(function(n) { return n.id == newBanner.id }).length;
@@ -224,6 +234,7 @@ angular.module('dymApp', [])
         alertUser("Banner ID \"" + newBanner.id + "\" already exists.");
       } else {
         dym.settings.push(newBanner);
+        dym.updateBannerGroup();
         dym.save();
         alertUser("Added banner settings for " + newBanner.name);
       }
@@ -242,7 +253,8 @@ angular.module('dymApp', [])
     //dym.settings[ dym.editBannerindex ] = dym.editBanner;
     console.log("edited banner " + dym.editBannerindex);
      jQuery("#editBannerSettingModal").modal('hide');
-     var hideAlert = true;
+     dym.updateBannerGroup();
+     var hideAlert = false; //true;
      dym.save(hideAlert);
     
   }
@@ -254,6 +266,7 @@ angular.module('dymApp', [])
     console.log(dym.settings);
     jQuery("#noticeUser p").text("Deleted " + dym.deletedBanner.name);
     jQuery("#noticeUser").show();
+    dym.updateBannerGroup();
     dym.save();
   
   }
@@ -261,6 +274,7 @@ angular.module('dymApp', [])
     console.log("Undoing " + dym.deletedBanner.name + " deletion.");
     dym.settings.splice(dym.deletedBannerindex, 0, dym.deletedBanner);
     dym.deletedBanner = {};
+    dym.updateBannerGroup();
     var hideAlert = true;
     dym.save(hideAlert);
     jQuery("#noticeUser").hide();
@@ -268,10 +282,8 @@ angular.module('dymApp', [])
   
   dym.$onInit = function() {
     if(localStorage.hasOwnProperty("dym")) dym.load();
+    dym.updateBannerGroup();
   };
-  
-  
-  
   
 });
 

@@ -99,6 +99,9 @@
         clear:both;
         background-color:lightgrey;
       }
+      .banner-group {
+        margin: 10px 0px;
+      }
       .btn-group-sm.btn, .btn-sm {
         margin-top: 3px;
       }
@@ -246,14 +249,29 @@
                 <label>
                   <input ng-model="dym.banner.settings.isFlyout" name="banner.settings.isFlyout" type="checkbox"> Flyout banner
                 </label><br>
-                
+                <!--<label>Dym variable :
+                  <input ng-model="dym.variable" name="variable" type="text"
+                         placeholder="{{variable}}" size="36" value="" >
+                </label><br>
+                {{$eval(dym.variable)}}-->
                 </form>
               
             </div>
             <div id="WebformSettings" class="form-container col-4">
               <form name="WebformSettings">
-                <span style="text-align:right; display:inherit;"><button type="button" class="clear-all btn btn-sm btn-link">Clear All</button> <button type="button" class="select-all btn btn-sm btn-link">Select All</button> </span>
-                <h4>Desktop Banners</h4>
+                <span style="text-align:right; display:inherit;">
+                  <button type="button" class="clear-all btn btn-sm btn-link">Clear All</button>
+                  <button type="button" class="select-all btn btn-sm btn-link">Select All</button>
+                </span>
+                
+                <div class="banner-group" ng-repeat="group in dym.groupBanners | orderBy">
+                  <h4>{{group}}</h4>
+                  <div class="btn-group" >
+                    <button ng-repeat="banner in dym.settings | filter:group" type="button" data-toggle="button" data-label="{{banner.id}}" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>{{banner.id}}</button>
+                  </div>
+                </div>
+                
+                <!--<h4>Desktop Banners</h4>
                 <div class="btn-group">
                   <button type="button" data-toggle="button" data-label="HT" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>HT</button>
                   <button type="button" data-toggle="button" data-label="UT" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>UT</button>
@@ -270,7 +288,7 @@
                   <button type="button" data-toggle="button" data-label="STORE" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>STORE</button>
                 </div>
                 <br/>
-                <br/>
+                <br/>-->
                 
                 <div ng-show="dym.banner.settings.isFlyout">
                   <h4>Flyouts</h4>

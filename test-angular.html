@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dymApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>DYM MKT Webform with Angular.JS</title>
+
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free.all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="vendor/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.easing.min.js"></script>
+	<script src="vendor/jszip/jszip.min.js" async></script>
+    <script src="vendor/filesaver.min.js" async></script>
+    <script src="vendor/bootstrap.bundle.min.js" async></script>
+    
+    <!-- Load Angular.JS -->
+    <script src="js/angularjs.1.7.5.min.js"></script>
+    <script src="angular.js"></script>
+    <script src="bannerType.js"></script>
+    <script src="emailabt.js"></script>
+
+    
+
+    <style>
+      body {
+        font-size: 0.9em;
+      }
+      pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+        margin: 1rem;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: lightgrey;
+        text-align: left;
+        resize: both;
+        overflow: auto;
+      }
+      .copytext {
+        position: absolute;
+        padding: 10px;
+        background-color: transparent;
+        display: block;
+        z-index: 2;
+        right: 16px;
+        margin: 15px;
+        cursor: pointer;
+        color: #fff;
+        border-radius: 5px 10px;
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
+      }
+      .copytext:hover {
+        
+        background-color: #027de7;
+      }
+      #html-emailabt .copytext {
+        margin: 0px 15px;
+      }
+      
+      #alertUser .alert {
+        margin: 0px;
+        text-align: center;
+      }
+      
+      #noticeUser {
+        display: none;
+      }
+      
+      var {
+        font-style: normal;
+        color: brown;
+      }
+      
+      input.uppercase {
+        text-transform: uppercase;
+      }
+      h4 {
+        font-size: 1.1em;
+      }
+      
+      footer {
+        margin-top: 20px;
+        padding: 20px;
+        clear:both;
+        background-color:lightgrey;
+      }
+      .banner-group {
+        margin: 10px 0px;
+      }
+      .btn-group-sm.btn, .btn-sm {
+        margin-top: 3px;
+      }
+      .btn-outline-primary:not(:disabled):not(.disabled):not(:hover).active,
+      .btn-outline-primary:not(:disabled):not(.disabled):not(:hover):active,
+      .show>.btn-outline-primary.dropdown-toggle {
+        color: #fff;
+        background-color: #328bea;
+        border-color: #007bff;
+      }
+      .btn-outline-secondary:not(:disabled):not(.disabled):not(:hover).active,
+      .btn-outline-secondary:not(:disabled):not(.disabled):not(:hover):active,
+      .show>.btn-outline-secondary.dropdown-toggle {
+        color: #fff;
+        background-color: #84898e;
+        border-color: #6c757d;
+      }
+      .form-output:before, #Devlog:before {
+        content: "";
+        display: table;
+        position: relative;
+        width: 100%;
+        border-top: 1px solid grey;
+        margin: 20px auto;
+      }
+  	  a[data-toggle='tooltip'] {
+    		margin: 5px;
+    		padding: 0px 5px;
+  	  }
+  	  th a[data-toggle='tooltip'] {
+        color: #fff;
+    		margin: 0px;
+    		padding: 0px;
+  	  }
+  	  
+      .btn-outline-secondary.save-banners {
+        margin: 10px auto;
+      }
+      .tab-pane {
+       padding-top: 20px;
+      }
+      .nav-link-sm {
+        padding: .25rem 1rem;
+      }
+      .form-container {
+        
+      }
+      
+      #WebformSettings form {
+        border: 1px solid grey;
+        border-radius: 10px;
+        padding: 10px 15px;
+      }
+      #FormOutput {
+        text-align: center;
+      }
+      
+    </style>
+
+  </head>
+
+  <body id="page-top">
+    <div id="wrapper">
+      
+       <!-- Alerts for the User -->
+        
+<div id="alertUser" class="modal fade" tabindex="-1" role="dialog"> <!--data-backdrop="false">-->
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div  class="alert alert-info" role="alert" style="display:block;" >
+        Alert message.
+        <!--<a class="alert-link" href="#">Link</a>-->
+      </div>
+    </div>
+  </div>
+</div>
+      <nav>
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/index.html">Home</a>
+          </li>
+          <li class="breadcrumb-item active">DYM MKT Webform</li>
+        </ol>
+        
+       
+      
+        
+        <!-- Tabs under Breadcrumbs -->
+        <ul class="nav nav-tabs" role="tablist" >
+          <li class="nav-item">
+            <a class="nav-link active" id="dym-tab" data-toggle="tab" href="#dym-banners" role="tab" aria-controls="dym-banners" aria-selected="true">DYM Banners</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="email-tab" data-toggle="tab" href="#email-abt" role="tab" aria-controls="email-abt" aria-selected="false">Email Homepage ABT</a>
+          </li>
+		      <li class="nav-item">
+            <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
+          </li>
+          <!--<li class="nav-item">
+            <a class="nav-link disabled" id="flyout-tab" data-toggle="tab" href="#flyouts" role="tab" aria-controls="flyout" aria-selected="false">Flyout</a>
+          </li>-->
+        </ul>
+      </nav>
+      
+      
+      <!-- Main content controlled by DYMController -->
+      <div id="content-wrapper" class="tab-content" ng-controller="DYMController as dym">
+        
+        <!-- DYM Banners tab -->
+        <div class="container-fluid tab-pane fade active show" id="dym-banners" role="tabpanel" aria-labelledby="dym-tab" >
+          
+          <div id="Loader">Loading...</div>
+
+          
+          <!-- Form -->
+          <div class="row">
+            
+            <div id="Webform" class="form-container col-8" >
+              <form name="dymForm">
+                <label>Folder Name :
+                  <input name="folderName" type="text"
+                         placeholder="Campaign Name" size="16" value="" >
+                </label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="Name of the folder downloaded, usually the campaign name. Defaults to 'banners'." tabIndex='-1'><sup>?</sup></a><br>
+				<label>*Campaign ID :
+                  <input ng-model="dym.banner.campaignID" name="campaignID" type="text"
+                         placeholder="DYM-MKS-19000" size="16" class="uppercase" value="" >
+                </label><br>
+                <label>Customer Segment :
+                  <input ng-model="dym.banner.customerSeg" name="seg" type="text"
+                         placeholder="STATIC" size="16" value="">
+                </label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="To download multiple segments, separate the segments with a comma, no spaces. Ex: &#x22;STATIC,SEG12,DealHunter&#x22;" tabIndex='-1'><sup>?</sup></a><br>
+                <label>*Banner href :
+                  <input ng-model="dym.banner.href" name="href" type="text"
+                         placeholder="https://www.newegg.com" size="36" value="">
+                </label><br>
+                <label>*<span ng-show="dym.banner.settings.isFlyout">Flyout </span>Banner img :
+                  <input ng-model="dym.banner.bannerLink" name="bannerLink" type="text"
+                         placeholder="https://dummyimage.com/970x50/f00/fff" size="36" value="" >
+                </label><br>
+                <label>*Banner alt &amp; Title : <br>
+                  <textarea ng-model="dym.banner.alt" name="alt" type="text"
+                            placeholder="Alt text for banners" cols="36" rows="3" value=""></textarea>
+                </label><br>
+                <label>
+                  <input ng-model="dym.banner.settings.isFlyout" name="banner.settings.isFlyout" type="checkbox"> Flyout banner
+                </label><br>
+                <!--<label>Dym variable :
+                  <input ng-model="dym.variable" name="variable" type="text"
+                         placeholder="{{variable}}" size="36" value="" >
+                </label><br>
+                {{$eval(dym.variable)}}-->
+                </form>
+              
+            </div>
+            <div id="WebformSettings" class="form-container col-4">
+              <form name="WebformSettings">
+                <span style="text-align:right; display:inherit;">
+                  <button type="button" class="clear-all btn btn-sm btn-link">Clear All</button>
+                  <button type="button" class="select-all btn btn-sm btn-link">Select All</button>
+                </span>
+                
+                <div class="banner-group" ng-repeat="group in dym.groupBanners | orderBy">
+                  <h4>{{group}}</h4>
+                  <div class="btn-group" >
+                    <button ng-repeat="banner in dym.settings | filter:group" type="button" data-toggle="button" data-label="{{banner.id}}" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>{{banner.id}}</button>
+                  </div>
+                </div>
+                
+                <!--<h4>Desktop Banners</h4>
+                <div class="btn-group">
+                  <button type="button" data-toggle="button" data-label="HT" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>HT</button>
+                  <button type="button" data-toggle="button" data-label="UT" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>UT</button>
+                  <button type="button" data-toggle="button" data-label="PB" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>PB</button>
+                  <button type="button" data-toggle="button" data-label="BB" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>BB</button>
+                </div>
+                <br/>
+                <br/>
+                <h4>Mobile Banners</h4>
+                <div class="btn-group">
+                  <button type="button" data-toggle="button" data-label="MID5" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>MID5</button>
+                  <button type="button" data-toggle="button" data-label="FOOT" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>FOOT</button>
+                  <button type="button" data-toggle="button" data-label="SHARE" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>SHARE</button>
+                  <button type="button" data-toggle="button" data-label="STORE" class="btn btn-sm btn-outline-primary active" href="#" aria-pressed="true" active>STORE</button>
+                </div>
+                <br/>
+                <br/>-->
+                
+                <div ng-show="dym.banner.settings.isFlyout">
+                  <h4>Flyouts</h4>
+                  <!--<div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-sm btn-outline-secondary active"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="" autocomplete="off">None</label>
+                    <label class="btn btn-sm btn-outline-secondary"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="160_360" autocomplete="off">160_360</label>
+                    <label class="btn btn-sm btn-outline-secondary"><input type="radio" name="flyoutsize" ng-model="dym.flyout.size" value="160_600" autocomplete="off">160_600</label>
+                  </div>
+                  <br/>-->
+                  <select  ng-model="dym.banner.flyoutnav" id="flyout-select">
+                    <option value="NV1">Systems (PCs) (NV1)</option>
+                    <option value="NV2">Components (NV2)</option>
+                    <option value="NV3">Electronics (NV3)</option>
+                    <option value="NV4">Gaming (NV4)</option>
+                    <option value="NV5">Networking (NV5)</option>
+                    <option value="NV6">Office Solutions (NV6)</option>
+                    <option value="NV7">Software (NV7)</option>
+                    <option value="NV8">Automotive (NV8)</option>
+                    <option value="NV9">Home &amp; Tools (NV9)</option>
+                    <option value="NV10">Health &amp; Sports (NV10)</option>
+                    <option value="NV11">Apparel &amp; Accessories (NV11)</option>
+                    <option value="NV12">Hobbies &amp; Toys (NV12)</option>
+                  </select>
+                </div>
+                <br>
+                <button type="button" data-label="save-banners" class="btn btn-sm btn-outline-secondary save-banners" onclick="saveBanners();" ng-click="dym.save()">Download Banners as HTML</button>
+              </form>
+            </div>
+          </div>
+          <!-- Form Output -->
+          <div id="FormOutput">
+            <button type="button" class="form-output-filter btn btn-sm btn-link" ng-click="dym.banner.settings.precode = !dym.banner.settings.precode" ng-switch="dym.banner.settings.precode">
+              <span ng-switch-when="true">Hide grey-box code</span>
+              <span ng-switch-when="false">Show grey-box code</span>
+            </button>
+            <button class="form-output-filter btn btn-sm btn-link" ng-click="dym.banner.settings.preview = !dym.banner.settings.preview" ng-switch="dym.banner.settings.preview">
+              <span ng-switch-when="true">Hide banners</span>
+              <span ng-switch-when="false">Show banners</span>
+            </button>
+            
+            <!--<banner-type dym="dym.banner" type="HT" title="Homepage Top Banner" size="970x50" bg="true"></banner-type>
+            <banner-type dym="dym.banner" type="UT" title="Universal Top Banner" size="970x90" bg="true"></banner-type>
+            <banner-type dym="dym.banner" type="PB" title="Product Page Box Banner" size="300_250"></banner-type>
+            <banner-type dym="dym.banner" type="BB" title="Bullet Banner" size="374x50"></banner-type>
+            
+            <banner-type dym="dym.banner" type="MID5" title="Mobile Search Banner" size="640x100" mobile="true"></banner-type>
+            <banner-type dym="dym.banner" type="FOOT" title="Mobile Footer Banner" size="640x100" mobile="true"></banner-type>
+            <banner-type dym="dym.banner" type="SHARE" title="Mobile Product anner" size="640x100" mobile="true"></banner-type>
+            <banner-type dym="dym.banner" type="STORE" title="Mobile EventStore Banner" size="640x100" mobile="true"></banner-type>
+            -->
+            
+            <div ng-repeat="ban in dym.settings track by ban.id">
+              <banner-type dym="dym.banner" type="{{ban.id}}" title="{{ban.name}}" size="{{ban.size}}" bg="{{ban.bg}}" mobile="{{ban.mobile}}"></banner-type>
+            </div>
+            
+            <banner-type ng-if="dym.banner.settings.isFlyout" dym="dym.banner" type="{{dym.banner.flyoutnav}}" title="Flyout Banner" size="120x360" flyout="true"></banner-type>
+            
+            
+          </div>
+          <!-- End Form Output -->
+          
+          <div id="Devlog">
+            <h4>Devlog</h4>
+            <p>This webform was created using AngularJS to facilitate Dynamic Marketing team's campaign setup procedure by quickly generating HTML files for dynamic banners. Normally, the team's operations would involve search-replacing 5 fields in multiple HTML files in a text editor, often just copies of older campaigns that might not have all the required banner formats. The old method always had the possibility of carrying over bad code, and required QA to read through the HTML to check for typos before approving a campaign (very repetitive after the first 100 banners). </p>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+        <!-- END DYM Banners tab -->
+        
+        <!-- Email ABT tab -->
+        <div class="container-fluid tab-pane fade" id="email-abt" role="tabpanel" aria-labelledby="email-tab">
+          
+          <!-- Form -->
+          <div class="row">
+            
+            <div id="EmailWebform" class="form-container col-md-4 col-sm-6" >
+              <form name="emailForm">
+                <!--<label># :
+                  <input ng-model="dym.email.count" name="email.count" type="text"
+                         placeholder="260" size="3" class="uppercase" value="" >
+                </label> {{dym.email.count | alphabetized}}<br>-->
+                <label>*Campaign ID :
+                  <input ng-model="dym.email.campaignID" name="email.campaignID" type="text"
+                         placeholder="DYMx-ABT-17011" size="16" class="uppercase" value="" >
+                </label><br>
+                <label>*Date :
+                  <input ng-model="dym.email.date" name="email.date" type="text"
+                         placeholder="" size="8" value="">
+                </label><br>
+                <label>*Product SKU :
+                  <input ng-model="dym.email.sku" name="email.sku" type="text"
+                         placeholder="2-3-3" size="16" value="">
+                </label>
+                <label>
+                  <input ng-model="dym.email.isCategory" name="email.isCategory" type="checkbox"> Category Wide
+                </label><br>
+                <label><span ng-switch="dym.email.isCategory">
+                  <span ng-switch-when="false">*Product Title</span>
+                  <span ng-switch-when="true">*Combo Title</span></span> :
+                  <input ng-model="dym.email.producttitle" name="email.producttitle" type="text"
+                         placeholder="" size="36" value="">
+                </label><br>
+                <label>*Product Image :
+                  <input ng-model="dym.email.productimg" name="email.productimg" type="text"
+                         placeholder="" size="36" value="">
+                </label><br>
+                <span ng-hide="dym.email.isCategory">
+                  <label>Full Price :
+                    <input ng-model="dym.email.fullprice" name="email.fullprice" type="text"
+                           placeholder="" size="8" value="">
+                  </label>
+                  <label>Sale Price :
+                    <input ng-model="dym.email.saleprice" name="email.saleprice" type="text"
+                           placeholder="" size="8" value="">
+                  </label><br>
+                
+                  <span class="email-discount">Discount % = {{(dym.email.fullprice - dym.email.saleprice) / dym.email.fullprice | twodecimals}}</span>
+                  <br>
+                  <label>
+                    <input ng-model="dym.email.freeShipping" name="email.freeShipping" type="checkbox"
+                              checked> Free Shipping
+                  </label>
+                  <label>
+                    <input ng-model="dym.email.showDiscount" name="email.showDiscount" type="checkbox"
+                              checked> Show Discount
+                  </label><br>
+                  
+                  <label>Promotext : <br>
+                    <textarea ng-model="dym.email.promotext" name="email.promotext" type="text"
+                              placeholder="Extra savings with promotext" cols="36" rows="3" value=""></textarea>
+                  </label><br>
+                </span>
+                
+                <!--<button ng-click="dym.email.isCategory = !dym.email.isCategory" type="button" data-toggle="button" data-label="isCategory" class="btn btn-sm btn-outline-primary" href="#" aria-pressed="false" >Category Wide</button><br>-->
+                
+                <!--<button type="button" data-toggle="button" data-label="UT" class="btn btn-sm btn-secondary" href="#" aria-pressed="false" active>Combo</button>-->
+                
+                
+                  <button type="button" data-label="save-banners" class="btn btn-sm btn-outline-secondary save-banners" onclick="saveBanners();" ng-click="dym.save()">Download Email Homepage ABT HTML</button>
+                </form>
+              
+            </div>
+            <!-- Email Form Output -->
+            <div id="EmailFormOutput" class="form-container col-md-8 col-sm-6">
+              
+              <emailabt email="dym.email" type="normal"></emailabt>
+
+            </div>
+            <!-- End Email Form Output -->
+          </div>
+          
+        </div>
+        <!-- END Email ABT tab -->
+		
+		<style>
+		.current-banners {
+			margin: 10px;
+		}
+
+		</style>
+		
+		<!-- Settings tab -->
+        <div class="container-fluid tab-pane show fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+			<div class="row">
+				<div class="form-container col-8" >
+					<h4>Banner Settings</h4>
+					<div class="current-banners table-responsive">
+						<table class="table table-sm">
+							<caption>Current banner settings</caption>
+							<thead class="thead-dark"><tr>
+								<th scope="col">#</th>
+								<th scope="col">Group</th>
+								<th scope="col">Name</th>
+								<th scope="col">ID</th>
+								<th scope="col">Size</th>
+								<th scope="col"><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="Mobile banners have slightly different CSS styling." tabIndex='-1'>Mobile</a></th>
+								<th scope="col"><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="Banner has a separate bg file" tabIndex='-1'>Bg</a></th>
+								<th scope="col">Actions</th>
+							</tr></thead>
+							<tbody>
+							<tr ng-repeat="banner in dym.settings | filter:banner.group track by banner.id">
+								<th scope="row">{{ $index }}</th><td>{{ banner.group}}</td><td>{{ banner.name }} </td><td> {{ banner.id}} </td><td> {{ banner.size }} </td><td> {{ banner.mobile | checkmark}} </td><td> {{ banner.bg | checkmark }} </td>
+								<td>
+								  <button type="button" class="btn btn-sm btn-link" ng-click="dym.editBannerSetting($index)">Edit</button>
+								  <button type="button" class="btn btn-sm btn-link" ng-click="dym.deleteBannerSetting($index)">Delete</button>
+							  </td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="col-4">
+			    <div id="noticeUser" class="alert alert-info fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <p>Message</p>
+            <a class="alert-link" href="#" ng-click="dym.undoBannerDeletion()">Undo</a>
+          </div>
+				  <!--{{dym.deletedBanner}}<br>{{dym.deletedBannerindex}}<br>{{dym.settings}}-->
+			  </div>
+        				
+        <!--<div id="notifyUser" class="modal fade col-4" tabindex="-1" role="dialog" data-backdrop="false">
+          <div class="modal-dialog modal-sm" role="document">
+            <div  class="alert alert-info" role="alert" style="display:block;" >Alert message.</div>
+          </div>
+        </div>-->
+        				
+			</div>
+			<div class="row">
+				<div class="form-container col-6" >
+					<h4>Add New Banner</h4>
+					<form name="newBanner" ng-submit="dym.addBannerSetting()">
+						<label>Banner Group :
+						  <input ng-model="dym.newBanner.group" name="group" type="text" size="16" value="" >
+						</label><br>
+						<label>Banner Name :
+						  <input ng-model="dym.newBanner.name" name="name" type="text" size="16" value="" >
+						</label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="Ex: &#x22;Homepage Top Banner&#x22;, &#x22;UniTop Banner&#x22;, etc." tabIndex='-1'><sup>?</sup></a><br>
+						<label>Banner ID :
+						  <input ng-model="dym.newBanner.id" name="id" type="text" size="8" class="uppercase" value="" >
+						</label><br>
+						<label>Banner Size :
+						  <input ng-model="dym.newBanner.size" name="size" type="text" placeholder="[width]x[height]" size="16" value="">
+						</label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="This form will replace &#x22;___x___&#x22; with &#x22;[width]x[height].jpg&#x22; in the banner img URL." tabIndex='-1'><sup>?</sup></a><br>
+						<label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="Mobile banners have slightly different CSS styling." tabIndex='-1'>Mobile</a>
+						  <input ng-model="dym.newBanner.mobile" name="mobile" type="checkbox" value="" >
+						</label>
+						<label><a href="#" data-toggle="tooltip" title="" data-placement="right" data-original-title="Banner has a separate bg file" tabIndex='-1'>Bg</a>
+						  <input ng-model="dym.newBanner.bg" name="bg" type="checkbox" value="" >
+						</label><br>
+						<input type="submit" value="Add new banner"/><br>
+						
+					</form>
+				</div>
+				<div class="form-container col-6" >
+					<h4>Reset Settings</h4>
+					<p>Resetting the settings will remove the saved fields from previous campaigns and revert to default settings.</p>
+					<p>Newly created banner settings are stored in local storage, since github pages are static and don't store data in a database. This means any changes you make here will not affect the setting's set in another browser, and changes will not sync to every user.</p>
+					<input type="button" value="Reset Settings" ng-click="dym.reset()"/>
+					<!--<input type="button" value="Load Settings" ng-click="dym.load()"/>-->
+				</div>
+			</div>
+			<div id="editBannerSettingModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editBannerSettingModal" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Edit Banner {{dym.editBannerindex}}</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form name="editBanner" ng-submit="dym.saveBannerEdits()">
+    						<label>Banner Group :
+    						  <input ng-model="dym.editBanner.group" name="group" type="text" size="16" value="" >
+    						</label><br>
+    						<label>Banner Name :
+    						  <input ng-model="dym.editBanner.name" name="name" type="text" size="16" value="" >
+    						</label><br>
+    						<label>Banner ID :
+    						  <input ng-model="dym.editBanner.id" name="id" type="text" size="8" class="uppercase" value="" >
+    						</label><br>
+    						<label>Banner Size :
+    						  <input ng-model="dym.editBanner.size" name="size" type="text" placeholder="[width]x[height]" size="16" value="">
+    						</label><br>
+    						<label>Mobile
+    						  <input ng-model="dym.editBanner.mobile" name="mobile" type="checkbox" value="" >
+    						</label>
+    						<label>Bg
+    						  <input ng-model="dym.editBanner.bg" name="bg" type="checkbox" value="" >
+    						</label><br>
+    						<input type="submit" value="Save banner"/><br>
+    						
+    					</form>
+            </div>
+          </div>
+        </div>
+      </div>
+		</div>
+        
+        <!-- Flyout tab -->
+        <!--<div class="container-fluid tab-pane fade" id="flyouts" role="tabpanel" aria-labelledby="flyout-tab">
+          Flyout stuff goes here
+        </div>-->
+        <!-- END Flyout tab -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <!--<span>Copyright © Your Website 2018</span>-->
+              <p>Webform for Dyanmic Marketing team's internal use.</p>
+              <p>Created with Angular, Bootstrap, Filesaver.js, JSZip, and something called a Blob.</p>
+              
+            </div>
+          </div>
+        </footer>
+
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+
+<script type="text/javascript">
+
+// Hide unnecessary banners that don't need to be downloaded.
+var WebformSettings = jQuery("#WebformSettings");
+jQuery("button.btn-outline-primary", WebformSettings).map(function(i,n) {
+  jQuery(n).click(function() {
+    jQuery("." + jQuery(this).attr("data-label")).slideToggle();
+  })
+});
+// Clear all + Select all buttons
+jQuery("button.clear-all", WebformSettings).click(function() {
+  jQuery(".btn-group-toggle input[type='radio']:first", WebformSettings).click()
+  jQuery(".btn-outline-primary.active", WebformSettings).click();
+});
+jQuery("button.select-all", WebformSettings).click(function() {
+  jQuery(".btn-outline-primary:not(.active)", WebformSettings).click();
+});
+// Tooltip and alert initialization
+jQuery('[data-toggle="tooltip"]').tooltip();
+jQuery(".alert").alert()
+
+// Hide "Loading..." text
+jQuery("#Loader").hide();
+
+// Function to download data to a file
+function download(data, filename, type) {
+  var file = new Blob([data], {type: type});
+  if (window.navigator.msSaveOrOpenBlob) // IE10+
+      window.navigator.msSaveOrOpenBlob(file, filename);
+  else { // Others
+      var a = document.createElement("a"),
+              url = URL.createObjectURL(file);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+      }, 0);
+  }
+}
+function saveBanners() {
+  
+  var banners = jQuery(".form-output:visible pre.text-area");
+  var folderName = (document.forms.dymForm.folderName.value || "banners") + ".zip";
+  var segfield = document.forms.dymForm.seg;
+  var segs = segfield.value.split(',');
+
+  if( banners.length > 1 || segs.length > 1) {
+    console.log("Downloading multiple html files.");
+    var zip = new JSZip();
+	for( var i = 0; i < segs.length; i++) {
+		segfield.value = segs[i];
+		jQuery(segfield).change() // Trigger onChange event after manually inserting value to update all the grey-box code.
+		banners.map(function(i,n) {
+		  var filename = jQuery(n).attr('id').toLowerCase() + ".html";
+		  zip.folder(folderName).file(filename, jQuery(n).text());
+		});
+	}
+	// After generating all .html files with different segs, reset Segment back to original.
+	segfield.value = segs.join(',');
+	jQuery(segfield).change()
+	
+    zip.generateAsync({type:"blob"})
+      .then(function (blob) {
+          saveAs(blob, "banners.zip");
+      });
+  } else {
+    console.log("Downloading a banner as an html file.");
+    
+    var filename = jQuery(banners).attr("id").toLowerCase() + ".html";
+    var file = new Blob([jQuery(banners).text()], {type: "html"});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Not IE10+
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }, 0);
+    }
+  }
+}
+
+// Copy text in <pre> to clipboard.
+// Copied from Angelos Chalaris @ https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
+var copyToClipboard = function(t) {
+  console.log("copying text for pre#" + t.getAttribute("data-target") + "!");
+  var str = jQuery("pre#" + t.getAttribute("data-target")).text();
+  const el = document.createElement('textarea');  // Create a <textarea> element
+  el.value = str;                                 // Set its value to the string that you want copied
+  el.setAttribute('readonly', '');                // Make it readonly to be tamper-proof
+  el.style.position = 'absolute';
+  el.style.left = '-9999px';                      // Move outside the screen to make it invisible
+  document.body.appendChild(el);                  // Append the <textarea> element to the HTML document
+  const selected =
+    document.getSelection().rangeCount > 0        // Check if there is any content selected previously
+      ? document.getSelection().getRangeAt(0)     // Store selection if found
+      : false;                                    // Mark as false to know no selection existed before
+  el.select();                                    // Select the <textarea> content
+  document.execCommand('copy');                   // Copy - only works as a result of a user action (e.g. click events)
+  alertUser("Copied HTML contents to clipboard.");
+  document.body.removeChild(el);                  // Remove the <textarea> element
+  if (selected) {                                 // If a selection existed before copying
+    document.getSelection().removeAllRanges();    // Unselect everything on the HTML document
+    document.getSelection().addRange(selected);   // Restore the original selection
+  }
+};
+
+var alertUser = function (message) {
+    
+    var alertModal = jQuery("#alertUser");
+    jQuery(".alert", alertModal).contents()[0].data = message;
+    jQuery(alertModal).modal("show");
+    setTimeout(function() {
+      jQuery(alertModal).modal("hide");
+    }, 4000);
+    
+}
+
+/*var noticeUser = function (message, action) {
+  var notice = jQuery("#noticeUser");
+  jQuery("p", notice).text(message);
+  if (action ) {
+    if( typeof action.text === "string" && typeof action.func === "function" ) {
+      jQuery(".alert-link", notice).text(action.text).click(action.func).show();
+    } else {
+      jQuery(".alert-link", notice).hide();
+      console.error("alertUser(message,action) -- action does not have text or func well defined");
+    }
+  } else {
+    jQuery(".alert-link", notice).hide();
+  }
+  jQuery(notice).show();
+}*/
+    </script>
+    
+  </body>
+
+</html>

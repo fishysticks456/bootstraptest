@@ -64,6 +64,16 @@ angular.module('dymApp', [])
     return parseInt(flyoutnav.split("NV")[1]) - 1;
   };
 })
+.filter('checkmark', function() {
+  return function(check) {
+    return check ? '✓'	: "";
+  };
+})
+.filter('unique', function() {
+  return function(value, index, self) {
+    return self.indexOf(value) === index;
+  };
+})
 
 .controller('DYMController', function() {
   var dym = this;
@@ -73,7 +83,7 @@ angular.module('dymApp', [])
   dym.banner = {
     campaignID : "DYM-MKS-19000",
     href : "https://www.newegg.com",
-    bannerLink : "https://dummyimage.com/970x50/f00/fff",
+    bannerLink : "https://dummyimage.com/970x50/27f/fff",
     alt : "Alt text for banners",
     customerSeg : "STATIC",
     flyoutnav : "NV1",
@@ -104,38 +114,176 @@ angular.module('dymApp', [])
     nav : "NV1"
   };*/
   
+  // Set default settings
+  dym.settings = [
+	  {
+		  "group": "Desktop",
+		  "name": "Homepage Top Banner",
+		  "id": "HT",
+		  "size": "970x50",
+		  "bg" : true
+	  },
+	  {
+		  "group": "Desktop",
+		  "name": "Universal Top Banner",
+		  "id": "UT",
+		  "size": "970x90",
+		  "bg" : true
+	  },
+	  {
+		  "group": "Desktop",
+		  "name": "Product Page Box Banner",
+		  "id": "PB",
+		  "size": "300_250"
+	  },
+	  {
+		  "group": "Desktop",
+		  "name": "Bullet Banner",
+		  "id": "BB",
+		  "size": "374x50"
+	  },
+	  {
+		  "group": "Mobile",
+		  "name": "Mobile Search Banner",
+		  "id": "MID5",
+		  "size": "640x100",
+		  "mobile" : true
+	  },
+	  {
+		  "group": "Mobile",
+		  "name": "Mobile Footer Banner",
+		  "id": "FOOT",
+		  "size": "640x100",
+		  "mobile" : true
+	  },
+	  {
+		  "group": "Mobile",
+		  "name": "Mobile Product Banner",
+		  "id": "SHARE",
+		  "size": "640x100",
+		  "mobile" : true
+	  },
+	  {
+		  "group": "Mobile",
+		  "name": "Mobile EventStore Banner",
+		  "id": "STORE",
+		  "size": "640x100",
+		  "mobile" : true
+	  }
+  ];
+  dym.newBanner = {
+	  "group": "",
+	  "name": "",
+	  "id": "",
+	  "size": "",
+	  "bg" : false,
+	  "mobile" : false
+  };
+  dym.deletedBanner = {};
+  dym.editBanner = {};
+  
+  dym.groupBanners = []
+  
   dym.copy = {
     banner : {},
-    email : {}
+    email : {},
+	  settings : []
   };
   
   
   
   // Store data in localStorage
-  dym.save = function() {
+  dym.save = function(hideAlert) {
     for( var m in dym.banner ) {dym.copy.banner[m] = dym.banner[m];}
     for( m in dym.email ) {dym.copy.email[m] = dym.email[m];}
+	  //for( m in dym.settings ) {dym.copy.settings[m] = dym.settings[m];}
+    dym.copy.settings = dym.settings;
     localStorage.setItem("dym", JSON.stringify(dym.copy));
     
-    alertUser("Saved dym session data to local storage");
+    if( !hideAlert ) alertUser("Saved dym session data to local storage");
   };
   dym.load = function() {
     var now = new Date();
     
     dym.copy = JSON.parse(localStorage.getItem("dym"));
-    for( var m in dym.banner ) {dym.banner[m] = dym.copy.banner[m];}
-    for( m in dym.email ) {dym.email[m] = dym.copy.email[m];}
+    for( var m in dym.copy.banner ) {dym.banner[m] = dym.copy.banner[m];}
+    for( m in dym.copy.email ) {dym.email[m] = dym.copy.email[m];}
+	  for( m in dym.copy.settings ) {dym.settings[m] = dym.copy.settings[m];}
     // Refresh date, no need to make it get yesterday's date.
     dym.email.date = (now.getDate() < 10 ? "0" + (now.getDate()) : now.getDate()) + (now.getMonth() < 9 ? "0" + (now.getMonth()+1) : now.getMonth()+1) + now.getFullYear();
     console.log("Loaded old session data from local storage");
   };
+  dym.reset = function() {
+	 dym.copy = {
+  		banner : {},
+  		email : {},
+  		settings : []
+	  };
+	localStorage.removeItem("dym");
+	alertUser("Erased dym session data from local storage.\nRefresh the page to reset settings.");
+  }
+  dym.updateBannerGroup = function() {
+    dym.groupBanners = Array.from(new Set(dym.settings.map(banner=>banner.group)));
+  }
+  dym.addBannerSetting = function() {
+    var newBanner = dym.newBanner;
+    console.log(newBanner);
+    if( newBanner && newBanner.group && newBanner.id && newBanner.size && newBanner.name ) {
+      var hasDuplicate = dym.settings.filter(function(n) { return n.id == newBanner.id }).length;
+      if( hasDuplicate ) {
+        alertUser("Banner ID \"" + newBanner.id + "\" already exists.");
+      } else {
+        dym.settings.push(newBanner);
+        dym.updateBannerGroup();
+        dym.save();
+        alertUser("Added banner settings for " + newBanner.name);
+      }
+    } else {
+      alertUser("Banner is missing a field");
+    }
+  }
+  dym.editBannerSetting = function(i) {
+    dym.editBanner = dym.settings[i];
+    dym.editBannerindex = i;
+    console.log("editing banner " + dym.editBanner.name);
+    jQuery("#editBannerSettingModal").modal('show');
+    
+  }
+  dym.saveBannerEdits = function() {
+    //dym.settings[ dym.editBannerindex ] = dym.editBanner;
+    console.log("edited banner " + dym.editBannerindex);
+     jQuery("#editBannerSettingModal").modal('hide');
+     dym.updateBannerGroup();
+     var hideAlert = false; //true;
+     dym.save(hideAlert);
+    
+  }
+  dym.deleteBannerSetting = function(i) {
+    console.log("deleting banner " + i);
+    dym.deletedBanner = dym.settings[i];
+    dym.deletedBannerindex = i;
+    dym.settings.splice(i,1);
+    console.log(dym.settings);
+    jQuery("#noticeUser p").text("Deleted " + dym.deletedBanner.name);
+    jQuery("#noticeUser").show();
+    dym.updateBannerGroup();
+    dym.save();
+  
+  }
+  dym.undoBannerDeletion = function() {
+    console.log("Undoing " + dym.deletedBanner.name + " deletion.");
+    dym.settings.splice(dym.deletedBannerindex, 0, dym.deletedBanner);
+    dym.deletedBanner = {};
+    dym.updateBannerGroup();
+    var hideAlert = true;
+    dym.save(hideAlert);
+    jQuery("#noticeUser").hide();
+  }
   
   dym.$onInit = function() {
     if(localStorage.hasOwnProperty("dym")) dym.load();
+    dym.updateBannerGroup();
   };
-  
-  
-  
   
 });
 
